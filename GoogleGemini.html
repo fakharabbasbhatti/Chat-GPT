@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Gemini Chat</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_Gemini_logo.svg" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb, #90caf9);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #chat-box {
+      height: 450px;
+      overflow-y: auto;
+      background: #ffffff;
+      border-radius: 25px;
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      border: 2px solid #4285f4;
+    }
+
+    .msg {
+      padding: 14px 20px;
+      margin: 10px 0;
+      border-radius: 20px;
+      max-width: 75%;
+      font-size: 16px;
+      animation: pop 0.25s ease-out;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.9); opacity:0; }
+      to { transform: scale(1); opacity:1; }
+    }
+
+    .user {
+      background: #4285f4;
+      color: #fff;
+      margin-left: auto;
+      border-bottom-right-radius: 0;
+    }
+
+    .bot {
+      background: #e8f0fe;
+      color: #202124;
+      margin-right: auto;
+      border-bottom-left-radius: 0;
+    }
+
+    .header-box {
+      text-align: center;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: #4285f4;
+      padding: 12px 0;
+      border-radius: 20px;
+    }
+
+    #user-input {
+      border-radius: 25px;
+      padding-left: 20px;
+      border: 2px solid #4285f4;
+    }
+
+    #send-btn {
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 22px;
+      background: #4285f4;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="header-box">
+      🔷 Google Gemini Chat
+    </div>
+
+    <div id="chat-box"></div>
+
+    <div class="input-group mt-3">
+      <input id="user-input" type="text" class="form-control" placeholder="Ask Gemini something..." />
+      <button id="send-btn" class="btn"><i class="bi bi-send-fill text-white"></i></button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chat-box');
+    const input = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    function addMessage(text, type) {
+      const div = document.createElement('div');
+      div.className = `msg ${type}`;
+      div.innerHTML = text;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function geminiReply(userText) {
+      const replies = [
+        "I'm Gemini, powered by Google ✨",
+        "That's interesting! 🤖",
+        "Let me think about that 🔍",
+        `You asked: <b>${userText}</b>`,
+        "Hello from Google Gemini 💙"
+      ];
+
+      const reply = replies[Math.floor(Math.random() * replies.length)];
+      addMessage(reply, 'bot');
+    }
+
+    sendBtn.addEventListener('click', () => {
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage(`<i class='bi bi-person'></i> ${text}`, 'user');
+      input.value = '';
+      setTimeout(() => geminiReply(text), 600);
+    });
+
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendBtn.click();
+    });
+  </script>
+</body>
+</html>
