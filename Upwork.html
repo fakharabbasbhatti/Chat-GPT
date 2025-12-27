@@ -3,66 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upwork Chat</title>
+<title>Upwork Premium Chat</title>
 
-<!-- Favicon -->
 <link rel="icon" href="https://www.upwork.com/favicon.ico">
-
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 <style>
 body{
-  background: linear-gradient(135deg,#e9f8f1,#f7fff9);
+  background: linear-gradient(135deg,#d9ffe8,#f7fff9);
   font-family:'Poppins',sans-serif;
+  overflow:hidden;
+}
+
+/* Floating background bubbles */
+.bg-circle{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(40px);
+  opacity:.5;
+  animation:float 12s infinite alternate;
+}
+.bg1{width:220px;height:220px;background:#14a800;top:10%;left:5%}
+.bg2{width:300px;height:300px;background:#37d67a;bottom:10%;right:10%}
+
+@keyframes float{
+  from{transform:translateY(0)}
+  to{transform:translateY(-40px)}
+}
+
+.container{
+  position:relative;
+  z-index:2;
 }
 
 .header-box{
-  background: linear-gradient(135deg,#14a800,#37d67a);
+  background:linear-gradient(135deg,#14a800,#37d67a);
   color:#fff;
-  padding:18px;
-  border-radius:22px;
+  padding:20px;
+  border-radius:26px;
   text-align:center;
-  font-size:30px;
-  font-weight:700;
-  box-shadow:0 8px 22px rgba(20,168,0,.35);
+  font-size:32px;
+  font-weight:800;
+  box-shadow:0 15px 35px rgba(20,168,0,.45);
   margin-bottom:20px;
+  animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+  from{box-shadow:0 0 20px rgba(20,168,0,.5)}
+  to{box-shadow:0 0 40px rgba(55,214,122,.9)}
 }
 
 #chat-box{
-  height:460px;
-  background:#fff;
-  border-radius:22px;
-  padding:20px;
+  height:470px;
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(18px);
+  border-radius:28px;
+  padding:22px;
   overflow-y:auto;
-  box-shadow:0 12px 30px rgba(0,0,0,.15);
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
 }
 
 .msg{
   display:flex;
-  gap:10px;
-  margin-bottom:15px;
-  animation:fadeUp .3s ease;
+  gap:12px;
+  margin-bottom:16px;
+  animation:pop .3s ease;
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:translateY(0)}
+@keyframes pop{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
 }
 
 .avatar{
-  width:40px;
-  height:40px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:20px;
+  font-size:22px;
 }
 
 .user .avatar{
-  background:#14a800;
+  background:linear-gradient(135deg,#14a800,#37d67a);
   color:#fff;
 }
 
@@ -71,9 +97,9 @@ body{
 }
 
 .bubble{
-  padding:14px 18px;
-  border-radius:18px;
-  max-width:75%;
+  padding:16px 20px;
+  border-radius:20px;
+  max-width:72%;
   font-size:15px;
 }
 
@@ -88,52 +114,58 @@ body{
 }
 
 .bot .bubble{
-  background:#f1faf4;
+  background:#ffffff;
   color:#1d2226;
   border-bottom-left-radius:6px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
 
 .input-area{
   display:flex;
-  gap:12px;
-  margin-top:16px;
+  gap:14px;
+  margin-top:18px;
 }
 
 #user-input{
-  border-radius:30px;
-  padding:14px 20px;
-  border:2px solid #14a800;
+  border-radius:35px;
+  padding:16px 22px;
+  border:none;
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
 }
 
 #send-btn{
-  width:56px;
-  height:56px;
+  width:60px;
+  height:60px;
   border-radius:50%;
   background:linear-gradient(135deg,#14a800,#37d67a);
   border:none;
   color:#fff;
-  font-size:22px;
-  box-shadow:0 6px 18px rgba(20,168,0,.4);
-  transition:.2s;
+  font-size:24px;
+  box-shadow:0 10px 25px rgba(20,168,0,.5);
+  transition:.25s;
 }
 
 #send-btn:hover{
-  transform:scale(1.1);
+  transform:scale(1.15) rotate(10deg);
 }
 </style>
 </head>
 
 <body>
+
+<div class="bg-circle bg1"></div>
+<div class="bg-circle bg2"></div>
+
 <div class="container mt-4">
 
   <div class="header-box">
-    💚 Upwork Chat
+    💚 Upwork Premium Chat
   </div>
 
   <div id="chat-box"></div>
 
   <div class="input-area">
-    <input id="user-input" class="form-control" placeholder="Send a proposal message ✍️">
+    <input id="user-input" class="form-control" placeholder="Pitch your idea confidently ✨">
     <button id="send-btn"><i class="bi bi-send-fill"></i></button>
   </div>
 
@@ -165,11 +197,11 @@ function addMessage(text,type){
 
 function upworkReply(text){
   const replies=[
-    "Thanks for submitting your proposal 💼",
-    "Your skills look like a great match 🌟",
-    "Let’s discuss the project timeline 📅",
-    "Looking forward to working with you 🤝",
-    `You wrote: <b>${text}</b>`
+    "Your proposal stands out 🌟",
+    "Client is reviewing your message 👀",
+    "This project looks like a great fit 💼",
+    "Let’s move forward 🚀",
+    `You sent: <b>${text}</b>`
   ];
   addMessage(replies[Math.floor(Math.random()*replies.length)],'bot');
 }
