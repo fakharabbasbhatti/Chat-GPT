@@ -3,70 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LinkedIn Cute Chat</title>
+<title>Upwork Chat</title>
 
-<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/174/174857.png">
+<!-- Favicon -->
+<link rel="icon" href="https://www.upwork.com/favicon.ico">
 
+<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 <style>
 body{
-  background: linear-gradient(135deg,#e8f0fe,#f3f2ef);
-  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#e9f8f1,#f7fff9);
+  font-family:'Poppins',sans-serif;
 }
 
 .header-box{
-  text-align:center;
-  background: linear-gradient(135deg,#0a66c2,#4dabf7);
+  background: linear-gradient(135deg,#14a800,#37d67a);
   color:#fff;
-  padding:16px;
-  border-radius:18px;
-  font-size:28px;
+  padding:18px;
+  border-radius:22px;
+  text-align:center;
+  font-size:30px;
   font-weight:700;
-  box-shadow:0 6px 18px rgba(10,102,194,.35);
+  box-shadow:0 8px 22px rgba(20,168,0,.35);
   margin-bottom:20px;
 }
 
 #chat-box{
   height:460px;
   background:#fff;
-  border-radius:20px;
+  border-radius:22px;
   padding:20px;
   overflow-y:auto;
-  box-shadow:0 10px 30px rgba(0,0,0,.15);
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
 }
 
 .msg{
   display:flex;
   gap:10px;
-  margin-bottom:14px;
-  animation:slideUp .3s ease;
+  margin-bottom:15px;
+  animation:fadeUp .3s ease;
 }
 
-@keyframes slideUp{
-  from{transform:translateY(10px);opacity:0}
-  to{transform:translateY(0);opacity:1}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 .avatar{
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:18px;
-  flex-shrink:0;
+  font-size:20px;
 }
 
 .user .avatar{
-  background:#0a66c2;
+  background:#14a800;
   color:#fff;
 }
 
 .bot .avatar{
-  background:#e8f0fe;
+  background:#e9f8f1;
 }
 
 .bubble{
@@ -81,43 +82,43 @@ body{
 }
 
 .user .bubble{
-  background:linear-gradient(135deg,#0a66c2,#4dabf7);
+  background:linear-gradient(135deg,#14a800,#37d67a);
   color:#fff;
-  border-bottom-right-radius:5px;
+  border-bottom-right-radius:6px;
 }
 
 .bot .bubble{
-  background:#f0f5fa;
+  background:#f1faf4;
   color:#1d2226;
-  border-bottom-left-radius:5px;
+  border-bottom-left-radius:6px;
 }
 
 .input-area{
-  margin-top:15px;
   display:flex;
-  gap:10px;
+  gap:12px;
+  margin-top:16px;
 }
 
 #user-input{
   border-radius:30px;
   padding:14px 20px;
-  border:2px solid #0a66c2;
+  border:2px solid #14a800;
 }
 
 #send-btn{
-  width:55px;
-  height:55px;
+  width:56px;
+  height:56px;
   border-radius:50%;
-  background:linear-gradient(135deg,#0a66c2,#4dabf7);
+  background:linear-gradient(135deg,#14a800,#37d67a);
   border:none;
   color:#fff;
   font-size:22px;
-  box-shadow:0 6px 16px rgba(10,102,194,.4);
+  box-shadow:0 6px 18px rgba(20,168,0,.4);
   transition:.2s;
 }
 
 #send-btn:hover{
-  transform:scale(1.08);
+  transform:scale(1.1);
 }
 </style>
 </head>
@@ -126,22 +127,22 @@ body{
 <div class="container mt-4">
 
   <div class="header-box">
-    💼 LinkedIn Cute Chat
+    💚 Upwork Chat
   </div>
 
   <div id="chat-box"></div>
 
   <div class="input-area">
-    <input id="user-input" class="form-control" placeholder="Write something professional but friendly 💬">
+    <input id="user-input" class="form-control" placeholder="Send a proposal message ✍️">
     <button id="send-btn"><i class="bi bi-send-fill"></i></button>
   </div>
 
 </div>
 
 <script>
-const chatBox = document.getElementById('chat-box');
-const input = document.getElementById('user-input');
-const sendBtn = document.getElementById('send-btn');
+const chatBox=document.getElementById('chat-box');
+const input=document.getElementById('user-input');
+const sendBtn=document.getElementById('send-btn');
 
 function addMessage(text,type){
   const msg=document.createElement('div');
@@ -149,7 +150,7 @@ function addMessage(text,type){
 
   const avatar=document.createElement('div');
   avatar.className='avatar';
-  avatar.innerHTML= type==='user' ? '👤' : '💼';
+  avatar.innerHTML=type==='user'?'👨‍💻':'💚';
 
   const bubble=document.createElement('div');
   bubble.className='bubble';
@@ -162,24 +163,24 @@ function addMessage(text,type){
   chatBox.scrollTop=chatBox.scrollHeight;
 }
 
-function botReply(text){
+function upworkReply(text){
   const replies=[
-    "Thanks for connecting 🤝",
-    "That sounds like a great opportunity ✨",
-    "Let’s schedule a discussion 💼",
-    "Happy to collaborate with you 😊",
-    `You said: <b>${text}</b>`
+    "Thanks for submitting your proposal 💼",
+    "Your skills look like a great match 🌟",
+    "Let’s discuss the project timeline 📅",
+    "Looking forward to working with you 🤝",
+    `You wrote: <b>${text}</b>`
   ];
   addMessage(replies[Math.floor(Math.random()*replies.length)],'bot');
 }
 
 sendBtn.onclick=()=>{
   if(!input.value.trim())return;
-  addMessage(input.value,'user');
   const txt=input.value;
+  addMessage(txt,'user');
   input.value='';
-  setTimeout(()=>botReply(txt),600);
-}
+  setTimeout(()=>upworkReply(txt),600);
+};
 
 input.addEventListener('keypress',e=>{
   if(e.key==='Enter')sendBtn.click();
