@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pakistan Currency Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #006400, #00a86b);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .converter {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h2 {
+            color: #006400;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #006400;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #004d00;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter">
+    <h2>PKR Currency Converter</h2>
+
+    <input type="number" id="amount" placeholder="Amount in PKR">
+
+    <select id="currency">
+        <option value="USD">USD - Dollar</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - Pound</option>
+    </select>
+
+    <button onclick="convertCurrency()">Convert</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function convertCurrency() {
+        let amount = document.getElementById("amount").value;
+        let currency = document.getElementById("currency").value;
+        let result = document.getElementById("result");
+
+        // Static exchange rates
+        let rates = {
+            USD: 280,
+            EUR: 305,
+            GBP: 355
+        };
+
+        if (amount === "" || amount <= 0) {
+            result.innerHTML = "Please enter valid amount";
+            result.style.color = "red";
+            return;
+        }
+
+        let converted = amount / rates[currency];
+        result.style.color = "green";
+        result.innerHTML = `Converted Amount: ${converted.toFixed(2)} ${currency}`;
+    }
+</script>
+
+</body>
+</html>
