@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Official Currency Exchange Tool</title>
+<title>Global Currency Exchange Tool</title>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💱</text></svg>">
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -166,8 +169,8 @@ button:hover {
 <body>
 
 <div class="card">
-    <h1>💰 Official Currency Exchange</h1>
-    <p>Convert your PKR hassle-free to major currencies.</p>
+    <h1>💰 Global Currency Exchange</h1>
+    <p>Convert your PKR hassle-free to major world currencies.</p>
 
     <div class="input-group">
         <div class="input-container">
@@ -183,6 +186,17 @@ button:hover {
                 <option value="GBP">🇬🇧 GBP - British Pound</option>
                 <option value="AED">🇦🇪 AED - UAE Dirham</option>
                 <option value="SAR">🇸🇦 SAR - Saudi Riyal</option>
+
+                <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
+                <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
+                <option value="SEK">🇸🇪 SEK - Swedish Krona</option>
+                <option value="NOK">🇳🇴 NOK - Norwegian Krone</option>
+                <option value="DKK">🇩🇰 DKK - Danish Krone</option>
+                <option value="THB">🇹🇭 THB - Thai Baht</option>
             </select>
         </div>
     </div>
@@ -200,13 +214,26 @@ function convert() {
     let currency = document.getElementById("currency").value;
     let resultBox = document.getElementById("result");
 
-    // **NOTE: These are dummy rates. For a real app, use a live API.**
+    // **NOTE: Yeh sirf dummy rates hain. Live rates ke liye API use karna padega.**
     let rates = {
-        USD: 280.50, // Updated dummy rate
+        // Original Rates
+        USD: 280.50, 
         EUR: 305.75,
         GBP: 355.90,
         AED: 76.50,
-        SAR: 74.80
+        SAR: 74.80,
+
+        // 10 New Dummy Rates (PKR per unit of foreign currency)
+        INR: 3.40,
+        CNY: 39.00,
+        JPY: 1.90,
+        AUD: 185.00,
+        CAD: 205.00,
+        CHF: 320.00,
+        SEK: 25.50,
+        NOK: 26.00,
+        DKK: 41.00,
+        THB: 8.00
     };
     
     // Clear previous error class
@@ -215,7 +242,7 @@ function convert() {
     if (amount === "" || isNaN(amount) || parseFloat(amount) <= 0) {
         resultBox.style.display = "block";
         resultBox.classList.add('error');
-        resultBox.innerHTML = "⚠️ Please enter a valid PKR amount to proceed.";
+        resultBox.innerHTML = "⚠️ Kripya sahi PKR amount enter karein.";
         return;
     }
 
