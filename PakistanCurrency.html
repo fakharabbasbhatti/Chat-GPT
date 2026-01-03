@@ -1,98 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Pakistan Currency Converter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #006400, #00a86b);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<meta charset="UTF-8">
+<title>PKR Currency Converter</title>
 
-        .converter {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            width: 320px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            text-align: center;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
 
-        h2 {
-            color: #006400;
-        }
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1db954, #0f5132);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        input, select, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 16px;
-        }
+.card {
+    background: white;
+    width: 360px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
 
-        button {
-            background: #006400;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
 
-        button:hover {
-            background: #004d00;
-        }
+.card h1 {
+    color: #0f5132;
+    margin-bottom: 10px;
+}
 
-        .result {
-            margin-top: 15px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-    </style>
+.card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #1db954;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #1db954;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #148f3c;
+    transform: scale(1.03);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    background: #f0fff6;
+    color: #0f5132;
+    font-size: 18px;
+    font-weight: 600;
+    display: none;
+}
+.footer {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #999;
+}
+</style>
 </head>
+
 <body>
 
-<div class="converter">
-    <h2>PKR Currency Converter</h2>
+<div class="card">
+    <h1>💱 PKR Converter</h1>
+    <p>Fast & Simple Currency Exchange</p>
 
-    <input type="number" id="amount" placeholder="Amount in PKR">
+    <input type="number" id="amount" placeholder="Enter amount in PKR">
 
     <select id="currency">
-        <option value="USD">USD - Dollar</option>
-        <option value="EUR">EUR - Euro</option>
-        <option value="GBP">GBP - Pound</option>
+        <option value="USD">🇺🇸 USD - Dollar</option>
+        <option value="EUR">🇪🇺 EUR - Euro</option>
+        <option value="GBP">🇬🇧 GBP - Pound</option>
     </select>
 
-    <button onclick="convertCurrency()">Convert</button>
+    <button onclick="convert()">Convert 💖</button>
 
     <div class="result" id="result"></div>
+
+    <div class="footer">Made with 💚 in Pakistan</div>
 </div>
 
 <script>
-    function convertCurrency() {
-        let amount = document.getElementById("amount").value;
-        let currency = document.getElementById("currency").value;
-        let result = document.getElementById("result");
+function convert() {
+    let amount = document.getElementById("amount").value;
+    let currency = document.getElementById("currency").value;
+    let resultBox = document.getElementById("result");
 
-        // Static exchange rates
-        let rates = {
-            USD: 280,
-            EUR: 305,
-            GBP: 355
-        };
+    let rates = {
+        USD: 280,
+        EUR: 305,
+        GBP: 355
+    };
 
-        if (amount === "" || amount <= 0) {
-            result.innerHTML = "Please enter valid amount";
-            result.style.color = "red";
-            return;
-        }
-
-        let converted = amount / rates[currency];
-        result.style.color = "green";
-        result.innerHTML = `Converted Amount: ${converted.toFixed(2)} ${currency}`;
+    if (amount === "" || amount <= 0) {
+        resultBox.style.display = "block";
+        resultBox.style.background = "#ffecec";
+        resultBox.style.color = "#d8000c";
+        resultBox.innerHTML = "⚠ Please enter a valid PKR amount";
+        return;
     }
+
+    let converted = amount / rates[currency];
+
+    resultBox.style.display = "block";
+    resultBox.style.background = "#f0fff6";
+    resultBox.style.color = "#0f5132";
+    resultBox.innerHTML = `✨ ${converted.toFixed(2)} ${currency}`;
+}
 </script>
 
 </body>
