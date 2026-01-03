@@ -2,96 +2,163 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PKR Currency Converter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Currency Exchange Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
+/* 1. Global & Typography */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
+/* 2. Body & Background */
 body {
     height: 100vh;
-    background: linear-gradient(135deg, #1db954, #0f5132);
+    /* Soft, professional gradient with a hint of green */
+    background: linear-gradient(135deg, #e0f7fa, #b2dfdb); 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* 3. Card Container */
 .card {
     background: white;
-    width: 360px;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    width: 380px;
+    padding: 35px;
+    /* Extra rounded corners */
+    border-radius: 25px; 
+    /* Soft, professional shadow */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); 
     text-align: center;
-    animation: fadeIn 1s ease;
+    animation: fadeIn 1s ease-out;
 }
 
+/* Fade In Animation */
 @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+    from {opacity: 0; transform: scale(0.95);}
+    to {opacity: 1; transform: scale(1);}
 }
 
+/* 4. Header & Titles */
 .card h1 {
-    color: #0f5132;
-    margin-bottom: 10px;
+    /* Muted primary color */
+    color: #004d40; 
+    margin-bottom: 5px;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .card p {
-    font-size: 14px;
-    color: #666;
+    font-size: 15px;
+    /* Soft grey for description */
+    color: #757575; 
+    margin-bottom: 25px;
+}
+
+/* 5. Form Elements (Cute & Clean) */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     margin-bottom: 20px;
+}
+
+.input-container {
+    position: relative;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #004d40;
+    font-weight: 500;
 }
 
 input, select {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    font-size: 15px;
+    padding: 14px;
+    border-radius: 12px; 
+    /* Light border */
+    border: 2px solid #e0e0e0; 
+    font-size: 16px;
     outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fafafa;
 }
 
 input:focus, select:focus {
-    border-color: #1db954;
+    /* Primary color on focus */
+    border-color: #26a69a; 
+    box-shadow: 0 0 0 3px rgba(38, 166, 154, 0.2);
+    background-color: #ffffff;
 }
 
+/* 6. Button Styling */
 button {
     width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    background: #1db954;
+    padding: 14px;
+    margin-top: 10px;
+    /* Cheerful, inviting color */
+    background: #ff7043; 
     border: none;
-    border-radius: 12px;
-    font-size: 16px;
+    border-radius: 15px;
+    font-size: 17px;
     color: white;
     cursor: pointer;
-    transition: 0.3s;
+    font-weight: 700;
+    /* Smoother transition */
+    transition: background 0.3s, transform 0.3s; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
 button:hover {
-    background: #148f3c;
-    transform: scale(1.03);
+    background: #f4511e;
+    transform: translateY(-2px); /* Cute lift effect */
+    box-shadow: 0 5px 15px rgba(255, 112, 67, 0.4);
 }
 
+/* 7. Result Box */
 .result {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 12px;
-    background: #f0fff6;
-    color: #0f5132;
-    font-size: 18px;
-    font-weight: 600;
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 15px;
+    /* Soft background */
+    background: #e8f5e9; 
+    /* Primary text color */
+    color: #004d40; 
+    font-size: 20px;
+    font-weight: 700;
     display: none;
+    transition: all 0.5s ease;
 }
+
+/* Error Result Style */
+.result.error {
+    background: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+}
+
+/* 8. Footer */
 .footer {
-    margin-top: 15px;
-    font-size: 12px;
-    color: #999;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #a1a1a1;
+}
+
+.footer span {
+    color: #ff7043;
+    font-weight: 500;
 }
 </style>
 </head>
@@ -99,22 +166,32 @@ button:hover {
 <body>
 
 <div class="card">
-    <h1>💱 PKR Converter</h1>
-    <p>Fast & Simple Currency Exchange</p>
+    <h1>💰 Official Currency Exchange</h1>
+    <p>Convert your PKR hassle-free to major currencies.</p>
 
-    <input type="number" id="amount" placeholder="Enter amount in PKR">
+    <div class="input-group">
+        <div class="input-container">
+            <label for="amount">Amount (PKR):</label>
+            <input type="number" id="amount" placeholder="e.g. 10000" min="0">
+        </div>
 
-    <select id="currency">
-        <option value="USD">🇺🇸 USD - Dollar</option>
-        <option value="EUR">🇪🇺 EUR - Euro</option>
-        <option value="GBP">🇬🇧 GBP - Pound</option>
-    </select>
+        <div class="input-container">
+            <label for="currency">Target Currency:</label>
+            <select id="currency">
+                <option value="USD">🇺🇸 USD - US Dollar</option>
+                <option value="EUR">🇪🇺 EUR - Euro</option>
+                <option value="GBP">🇬🇧 GBP - British Pound</option>
+                <option value="AED">🇦🇪 AED - UAE Dirham</option>
+                <option value="SAR">🇸🇦 SAR - Saudi Riyal</option>
+            </select>
+        </div>
+    </div>
 
-    <button onclick="convert()">Convert 💖</button>
+    <button onclick="convert()">Calculate Exchange Rate <span style="font-size: 18px;">✨</span></button>
 
     <div class="result" id="result"></div>
 
-    <div class="footer">Made with 💚 in Pakistan</div>
+    <div class="footer">Powered by Gemini. Built with <span>❤️</span> for Pakistan.</div>
 </div>
 
 <script>
@@ -123,26 +200,34 @@ function convert() {
     let currency = document.getElementById("currency").value;
     let resultBox = document.getElementById("result");
 
+    // **NOTE: These are dummy rates. For a real app, use a live API.**
     let rates = {
-        USD: 280,
-        EUR: 305,
-        GBP: 355
+        USD: 280.50, // Updated dummy rate
+        EUR: 305.75,
+        GBP: 355.90,
+        AED: 76.50,
+        SAR: 74.80
     };
+    
+    // Clear previous error class
+    resultBox.classList.remove('error');
 
-    if (amount === "" || amount <= 0) {
+    if (amount === "" || isNaN(amount) || parseFloat(amount) <= 0) {
         resultBox.style.display = "block";
-        resultBox.style.background = "#ffecec";
-        resultBox.style.color = "#d8000c";
-        resultBox.innerHTML = "⚠ Please enter a valid PKR amount";
+        resultBox.classList.add('error');
+        resultBox.innerHTML = "⚠️ Please enter a valid PKR amount to proceed.";
         return;
     }
 
-    let converted = amount / rates[currency];
-
+    let converted = parseFloat(amount) / rates[currency];
+    let rateText = rates[currency].toFixed(2);
+    
     resultBox.style.display = "block";
-    resultBox.style.background = "#f0fff6";
-    resultBox.style.color = "#0f5132";
-    resultBox.innerHTML = `✨ ${converted.toFixed(2)} ${currency}`;
+    resultBox.innerHTML = `
+        <span style="font-size: 28px;">${converted.toFixed(2)} ${currency}</span>
+        <br>
+        <span style="font-size: 14px; font-weight: 500; color: #388e3c;">(Rate: 1 ${currency} ≈ PKR ${rateText})</span>
+    `;
 }
 </script>
 
