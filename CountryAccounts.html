@@ -3,112 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <title>Country Wise Accounts System</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+    /* 🎨 Global Styles: Soft Background and Font */
     body {
-        font-family: "Poppins", Arial, sans-serif;
-        background: linear-gradient(135deg, #dbeafe, #fce7f3);
+        font-family: 'Quicksand', sans-serif; /* Changed to a softer, friendlier font */
+        background: linear-gradient(135deg, #f0f9ff, #fff0f6); /* Softer, pastel gradient */
         min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: 0;
     }
 
+    /* 📦 Container: Puffy and Cute Box */
     .container {
-        width: 420px;
+        width: 550px; /* Slightly wider */
         background: #ffffff;
-        padding: 25px;
-        border-radius: 18px;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        animation: pop 0.4s ease;
+        padding: 30px;
+        border-radius: 25px; /* More rounded corners for 'cute' feel */
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Deeper shadow */
+        animation: pop 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncier animation */
+        border: 2px solid #fee2e2; /* Soft, light-red border */
     }
 
     @keyframes pop {
-        from { transform: scale(0.95); opacity: 0; }
+        from { transform: scale(0.9); opacity: 0; }
         to { transform: scale(1); opacity: 1; }
     }
 
+    /* 🎀 Title: Playful Heading */
     h2 {
         text-align: center;
-        margin-bottom: 20px;
-        color: #4f46e5;
+        margin-bottom: 25px;
+        color: #f67280; /* Cute, pastel pink/red color */
+        font-weight: 700;
+        font-size: 1.8rem;
+        text-shadow: 1px 1px 2px rgba(255, 192, 203, 0.5); /* Soft shadow for depth */
     }
 
+    /* 📝 Form Area: Gentle Inputs */
     .form {
         display: flex;
         gap: 10px;
-        margin-bottom: 18px;
+        margin-bottom: 20px;
     }
 
     input {
         flex: 1;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
+        padding: 12px;
+        border: 2px solid #ffe4e6; /* Soft pink border */
+        border-radius: 15px; /* Even more rounded */
         outline: none;
-        transition: 0.3s;
+        transition: all 0.3s ease;
+        background: #fffafa; /* Very light pink background */
+        font-size: 1rem;
+    }
+
+    input::placeholder {
+        color: #b3b3b3;
     }
 
     input:focus {
-        border-color: #6366f1;
-        box-shadow: 0 0 5px rgba(99,102,241,0.4);
+        border-color: #f67280; /* Focus color matching the title */
+        box-shadow: 0 0 8px rgba(246, 114, 128, 0.5);
     }
 
+    /* 💖 Button: Gradient and Lifted */
     button {
-        padding: 10px 18px;
-        background: linear-gradient(135deg, #6366f1, #ec4899);
+        padding: 12px 20px;
+        background: linear-gradient(135deg, #ffc0cb, #f67280); /* Pink to cute red gradient */
         color: white;
         border: none;
-        border-radius: 12px;
+        border-radius: 15px;
         cursor: pointer;
-        font-weight: 500;
-        transition: 0.3s;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(246, 114, 128, 0.3);
     }
 
     button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        transform: translateY(-3px); /* More noticeable lift */
+        box-shadow: 0 10px 20px rgba(246, 114, 128, 0.4);
+        background: linear-gradient(135deg, #f67280, #ffc0cb); /* Reverse gradient on hover */
     }
 
+    /* 📊 Table: Soft and Striped */
     table {
         width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
+        border-collapse: separate; /* Use separate for border-spacing */
+        border-spacing: 0 8px; /* Space between rows */
+        margin-top: 15px;
         overflow: hidden;
-        border-radius: 12px;
+        border-radius: 15px; /* Rounded table corners */
     }
 
     thead {
-        background: #6366f1;
+        background: #f67280; /* Matching the cute theme color */
         color: white;
+        font-weight: 700;
     }
 
     th, td {
-        padding: 10px;
+        padding: 12px;
         text-align: center;
     }
+    
+    /* Make the first row of the body look nice with top rounded corners */
+    #tableBody tr:first-child td:first-child { border-top-left-radius: 12px; }
+    #tableBody tr:first-child td:last-child { border-top-right-radius: 12px; }
 
+    tbody tr {
+        background: #ffffff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Soft row shadow */
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+    
     tbody tr:nth-child(even) {
-        background: #f9fafb;
+        background: #ffe4e6; /* Soft pink stripe for even rows */
     }
 
     tbody tr:hover {
-        background: #eef2ff;
+        background: #ffc0cb; /* Lighter pink hover */
+        transform: scale(1.02); /* Slight zoom on hover */
+        cursor: default;
     }
 
+    /* 💰 Total Display: Highlighted and Cute */
     h3 {
-        margin-top: 18px;
+        margin-top: 25px;
         text-align: center;
-        color: #111827;
-        background: #f3f4f6;
-        padding: 10px;
-        border-radius: 12px;
-        font-weight: 500;
+        color: #f67280;
+        background: #fef0ff; /* Very light, soft purple background */
+        padding: 15px;
+        border-radius: 15px;
+        font-weight: 600;
+        box-shadow: 0 5px 10px rgba(246, 114, 128, 0.1);
+        border-left: 5px solid #ffc0cb; /* Decorative left border */
+        font-size: 1.2rem;
     }
 
     #total {
-        color: #ec4899;
-        font-weight: bold;
+        color: #ff3366; /* Bright pop of color for the number */
+        font-weight: 700;
+        font-size: 1.3rem;
     }
 </style>
 </head>
@@ -116,19 +155,19 @@
 <body>
 
 <div class="container">
-    <h2>🌍 Country-Wise Accounts</h2>
+    <h2>✨ Global Account Tracker ✨</h2>
 
     <div class="form">
-        <input type="text" id="country" placeholder="Country Name">
-        <input type="number" id="accounts" placeholder="Total Accounts">
-        <button onclick="addData()">➕ Add</button>
+        <input type="text" id="country" placeholder="Country Name" required>
+        <input type="number" id="accounts" placeholder="Total Accounts" min="0" required>
+        <button onclick="addData()">💖 Add</button>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>Country</th>
-                <th>Accounts</th>
+                <th>Country 🌍</th>
+                <th>Accounts 📈</th>
             </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -141,11 +180,15 @@
     let totalAccounts = 0;
 
     function addData() {
-        const country = document.getElementById("country").value.trim();
-        const accounts = parseInt(document.getElementById("accounts").value);
+        const countryInput = document.getElementById("country");
+        const accountsInput = document.getElementById("accounts");
+
+        const country = countryInput.value.trim();
+        const accounts = parseInt(accountsInput.value);
 
         if (country === "" || isNaN(accounts) || accounts < 0) {
-            alert("Please enter valid country and account number");
+            // Replaced alert with a slightly friendlier message
+            alert("Oops! Please check your Country Name and enter a valid number of Accounts (must be 0 or more).");
             return;
         }
 
@@ -160,10 +203,11 @@
         tableBody.appendChild(row);
 
         totalAccounts += accounts;
-        document.getElementById("total").innerText = totalAccounts;
+        document.getElementById("total").innerText = totalAccounts.toLocaleString(); // Added formatting for large numbers
 
-        document.getElementById("country").value = "";
-        document.getElementById("accounts").value = "";
+        // Clear inputs after successful addition
+        countryInput.value = "";
+        accountsInput.value = "";
     }
 </script>
 
