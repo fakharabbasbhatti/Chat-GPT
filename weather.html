@@ -1,162 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Weather App</title>
+  <meta charset="UTF-8">
+  <title>Modern Weather App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4CAF50; /* Green */
+      --secondary-color: #2196F3; /* Blue */
+      --text-dark: #333;
+      --text-light: #fff;
+      --card-bg: rgba(255, 255, 255, 0.9);
+    }
 
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
-  }
+    body {
+      font-family: 'Poppins', sans-serif;
+      /* More dynamic, vibrant background */
+      background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      color: var(--text-dark);
+    }
 
-  body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-  }
+    .weather-box {
+      /* Frosted glass/Soft card effect */
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      width: 320px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
 
-  .weather-box {
-    width: 320px;
-    padding: 25px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    text-align: center;
-    color: #fff;
-    animation: fadeIn 0.6s ease-in-out;
-  }
+    .weather-box:hover {
+        transform: translateY(-5px);
+    }
 
-  h2 {
-    margin-bottom: 15px;
-    font-size: 24px;
-    letter-spacing: 1px;
-  }
+    h2 {
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
 
-  input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
+    #city {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.3s;
+    }
 
-  button {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    background: linear-gradient(to right, #43cea2, #185a9d);
-    color: white;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+    #city:focus {
+        border-color: var(--secondary-color);
+    }
 
-  button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-  }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: var(--primary-color);
+      color: var(--text-light);
+      border: none;
+      font-size: 17px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.1s;
+      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+    }
 
-  .result {
-    margin-top: 20px;
-    animation: fadeIn 0.4s ease-in-out;
-  }
+    button:hover {
+      background: #45a049; /* Darker green */
+      transform: translateY(-2px);
+    }
 
-  .city {
-    font-size: 18px;
-    font-weight: 600;
-  }
+    .result {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
 
-  .temp {
-    font-size: 48px;
-    font-weight: bold;
-    margin: 10px 0;
-  }
+    .result h3 {
+        margin-top: 0;
+        font-size: 24px;
+        color: var(--secondary-color);
+    }
 
-  .desc {
-    text-transform: capitalize;
-    opacity: 0.9;
-  }
+    .temp {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 10px 0;
+    }
 
-  .extra {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    font-size: 14px;
-  }
+    .weather-icon {
+        font-size: 40px;
+        margin-bottom: 5px;
+        display: block; /* Ensures icon is on its own line */
+    }
 
-  .error {
-    color: #ffcccc;
-    margin-top: 10px;
-  }
+    .weather-details p {
+        margin: 5px 0;
+        font-size: 15px;
+        color: #555;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
+    .error {
+      color: #D32F2F; /* Red for error */
+      background-color: #FFEBEE;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="weather-box">
-  <h2>🌤 Weather App</h2>
+  <div class="weather-box">
+    <h2>Weather Forecast</h2>
 
-  <input type="text" id="city" placeholder="Enter city name">
-  <button onclick="getWeather()">Get Weather</button>
+    <input type="text" id="city" placeholder="शहर का नाम दर्ज करें (e.g., London)" autocomplete="off">
+    <button onclick="getWeather()">मौसम जानें</button>
 
-  <div id="output" class="result"></div>
-</div>
+    <div id="output" class="result">
+        <p>मौसम देखने के लिए एक शहर दर्ज करें।</p>
+    </div>
+  </div>
 
-<script>
-  const API_KEY = "YOUR_API_KEY_HERE";
-
-  async function getWeather() {
-    const city = document.getElementById("city").value;
-    const output = document.getElementById("output");
-
-    if (!city) {
-      output.innerHTML = "<div class='error'>Please enter city name</div>";
-      return;
+  <script>
+    const API_KEY = "YOUR_API_KEY_HERE";
+    
+    // Function to get a simple weather icon based on the weather ID
+    function getWeatherIcon(id) {
+        if (id >= 200 && id < 300) return '⛈️'; // Thunderstorm
+        if (id >= 300 && id < 400) return '🌧️'; // Drizzle
+        if (id >= 500 && id < 600) return '🌧️'; // Rain
+        if (id >= 600 && id < 700) return '❄️'; // Snow
+        if (id >= 701 && id < 781) return '🌫️'; // Atmosphere (Mist, Smoke, Haze etc.)
+        if (id === 781) return '🌪️'; // Tornado
+        if (id === 800) return '☀️'; // Clear Sky
+        if (id === 801) return '🌤️'; // Few Clouds
+        if (id > 801 && id < 900) return '☁️'; // Clouds
+        return '❓'; // Default
     }
 
-    output.innerHTML = "⏳ Loading...";
 
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-      );
+    async function getWeather() {
+      const city = document.getElementById("city").value;
+      const output = document.getElementById("output");
 
-      if (!response.ok) throw new Error("City not found");
+      if (!city) {
+        output.innerHTML = "<div class='error'>कृपया शहर का नाम दर्ज करें।</div>";
+        return;
+      }
 
-      const data = await response.json();
-      const icon = data.weather[0].icon;
+      output.innerHTML = "<p>Loading...</p>";
 
-      output.innerHTML = `
-        <div class="city">${data.name}, ${data.sys.country}</div>
-        <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
-        <div class="temp">${Math.round(data.main.temp)}°C</div>
-        <div class="desc">${data.weather[0].description}</div>
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=hi` // lang=hi for Hindi description (if supported by OpenWeatherMap)
+        );
 
-        <div class="extra">
-          <span>💧 ${data.main.humidity}%</span>
-          <span>💨 ${data.wind.speed} m/s</span>
-        </div>
-      `;
-    } catch (error) {
-      output.innerHTML = `<div class="error">${error.message}</div>`;
+        if (!response.ok) {
+          throw new Error("शहर नहीं मिला। कृपया सही नाम दर्ज करें।");
+        }
+
+        const data = await response.json();
+        const weatherIcon = getWeatherIcon(data.weather[0].id);
+
+        output.innerHTML = `
+          <h3>${data.name}, ${data.sys.country}</h3>
+          <span class="weather-icon">${weatherIcon}</span>
+          <div class="temp">${Math.round(data.main.temp)}°C</div>
+          <p style="text-transform: capitalize; font-weight: 600;">${data.weather[0].description}</p>
+          <div class="weather-details">
+            <p>आर्द्रता: ${data.main.humidity}%</p>
+            <p>हवा की गति: ${data.wind.speed} m/s</p>
+            <p>अधिकतम: ${Math.round(data.main.temp_max)}°C / न्यूनतम: ${Math.round(data.main.temp_min)}°C</p>
+          </div>
+        `;
+
+      } catch (error) {
+        output.innerHTML = `<div class='error'>${error.message}</div>`;
+        console.error(error);
+      }
     }
-  }
-</script>
+  </script>
 
 </body>
 </html>
