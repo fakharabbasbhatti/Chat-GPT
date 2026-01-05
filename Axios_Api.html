@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Axios POST API - Single File</title>
+
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      padding: 20px;
+    }
+
+    .box {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .success {
+      color: green;
+      margin-top: 15px;
+    }
+
+    .error {
+      color: red;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>POST API Form</h2>
+
+    <form id="myForm">
+      <input type="text" id="title" placeholder="Title" required>
+      <textarea id="body" placeholder="Description" required></textarea>
+      <input type="number" id="userId" placeholder="User ID" required>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const result = document.getElementById("result");
+      result.innerHTML = "";
+
+      const data = {
+        title: document.getElementById("title").value,
+        body: document.getElementById("body").value,
+        userId: document.getElementById("userId").value
+      };
+
+      try {
+        const response = await axios.post(
+          "https://jsonplaceholder.typicode.com/posts",
+          data
+        );
+
+        result.innerHTML = `
+          <div class="success">
+            Data submitted successfully! <br>
+            Post ID: ${response.data.id}
+          </div>
+        `;
+
+        document.getElementById("myForm").reset();
+
+      } catch (error) {
+        result.innerHTML = `
+          <div class="error">
+            Error: ${error.message}
+          </div>
+        `;
+        console.error(error);
+      }
+    });
+  </script>
+
+</body>
+</html>
