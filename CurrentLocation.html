@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Location</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .location-box {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="location-box">
+    <h2>Get Current Location</h2>
+    <button onclick="getLocation()">Get Location</button>
+    <p id="result">Location will appear here</p>
+</div>
+
+<script>
+    function getLocation() {
+        const result = document.getElementById("result");
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+
+                    result.innerHTML = `
+                        Latitude: ${lat} <br>
+                        Longitude: ${lon}
+                    `;
+                },
+                function(error) {
+                    result.innerHTML = "Location access denied ❌";
+                }
+            );
+        } else {
+            result.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+</script>
+
+</body>
+</html>
