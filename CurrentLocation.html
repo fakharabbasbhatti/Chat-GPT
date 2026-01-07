@@ -3,139 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Geo-Locator</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-
-<style>
+<title>Cute Geo-Locator</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <style>
     /* Global Reset and Font */
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Quicksand', sans-serif; /* Soft, friendly font */
     }
 
-    /* Body/Background Styling */
+    /* Body/Background Styling - Soft Gradient */
     body {
         height: 100vh;
-        /* Updated gradient for a more vibrant, deep-space feel */
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        /* Soft, light pastel gradient */
+        background: linear-gradient(135deg, #fce3ec 0%, #f6eaf8 100%);
         display: flex;
         justify-content: center;
         align-items: center;
-        overflow: hidden; /* Hide potential scrollbar from card animations */
+        color: #4a4a4a; /* Soft dark gray text */
     }
 
-    /* Card Styling (Glassmorphism Effect) */
+    /* Card Styling - Soft Neumorphic/Cloud Look */
     .card {
-        background: rgba(255, 255, 255, 0.1); /* Lighter background for better contrast */
-        backdrop-filter: blur(15px); /* Stronger blur for glass effect */
-        -webkit-backdrop-filter: blur(15px);
-        padding: 40px; /* Slightly more padding */
-        border-radius: 30px; /* More rounded corners */
-        width: 350px; /* Slightly wider */
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 40px; /* Very rounded corners */
+        width: 350px;
         max-width: 90%;
         text-align: center;
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle light border */
-        box-shadow: 0 25px 50px rgba(0,0,0,0.5); /* Stronger shadow */
-        animation: fadeIn 1s ease;
-        position: relative;
-        overflow: hidden;
+        /* Soft, gentle box shadow */
+        box-shadow: 15px 15px 30px rgba(198, 198, 198, 0.4),
+                    -15px -15px 30px rgba(255, 255, 255, 0.9),
+                    0 0 0 5px rgba(255, 255, 255, 0.5); /* Inner glow */
+        animation: slideIn 0.8s ease-out;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px); /* Cute slight lift on hover */
     }
 
     /* Heading Styling */
     h2 {
         margin-bottom: 5px;
-        font-size: 28px;
-        font-weight: 800; /* Bolder title */
-        letter-spacing: 1px;
+        font-size: 30px;
+        font-weight: 700;
+        color: #ff8fab; /* Cute pink heading */
     }
 
-    /* Icon Styling */
+    /* Icon Styling - Use a fluffy cloud or star icon */
     .icon {
-        font-size: 50px; /* Larger icon */
+        font-size: 50px;
         margin-bottom: 15px;
-        /* Subtle glow effect for the icon */
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        line-height: 1;
+        text-shadow: 0 5px 10px rgba(255, 143, 171, 0.3); /* Soft pink shadow */
     }
 
     /* Description Text */
     .card > p {
         font-size: 16px;
-        opacity: 0.8;
-        margin-bottom: 20px;
+        opacity: 0.7;
+        margin-bottom: 25px;
+        color: #7c7c7c;
     }
 
-    /* Button Styling */
+    /* Button Styling - Pill shape, soft press effect */
     button {
-        padding: 14px 30px;
+        padding: 15px 35px;
         border: none;
-        border-radius: 35px;
-        /* Enhanced button gradient */
-        background: linear-gradient(45deg, #ff9a8d, #ff6c6c);
-        color: #fff;
-        font-size: 17px;
-        font-weight: 600;
+        border-radius: 50px; /* Super rounded */
+        /* Soft button colors */
+        background: linear-gradient(145deg, #ffc9e2, #ff8fab);
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        box-shadow: 0 5px 15px rgba(255, 108, 108, 0.4);
+        text-transform: capitalize;
+        transition: all 0.2s ease-in-out;
+        /* Default soft inset shadow */
+        box-shadow: 5px 5px 10px #ff8fab40, -5px -5px 10px #ffffff; 
     }
 
     button:hover {
-        transform: scale(1.05); /* Slightly bigger on hover */
-        box-shadow: 0 10px 25px rgba(255, 108, 108, 0.6);
-        background: linear-gradient(45deg, #ff6c6c, #ff9a8d); /* Invert gradient on hover */
+        background: linear-gradient(145deg, #ff8fab, #ffc9e2); /* Invert gradient */
     }
-    
+
     button:active {
+        /* Neumorphic press effect */
+        box-shadow: inset 4px 4px 8px #d67990, inset -4px -4px 8px #ffffff;
         transform: scale(0.98);
     }
 
     /* Result Display Styling */
     .result {
-        margin-top: 25px;
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.2); /* Darker background for location data */
-        border-radius: 15px;
+        margin-top: 30px;
+        padding: 20px;
+        background: #f0f0f0; /* Light, soft background */
+        border-radius: 25px;
         text-align: left;
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.8;
-        opacity: 1;
-        transition: background 0.5s ease;
+        color: #4a4a4a;
+        box-shadow: inset 2px 2px 5px #c8c8c8, inset -2px -2px 5px #ffffff; /* Soft inset shadow */
     }
 
     /* Highlight coordinates */
     .result b {
-        color: #ffd369; /* Bright color for emphasis */
-        font-weight: 800;
-        display: inline-block; /* Helps with spacing */
+        color: #4dc7ff; /* Cute light blue for emphasis */
+        font-weight: 700;
         margin-left: 5px;
     }
     
     /* Link Styling */
     .result a {
-        color: #90ee90; /* Light green for the map link */
+        color: #a490ff; /* Light purple for the map link */
         text-decoration: none;
-        font-weight: 600;
-        display: block; /* Make the link take full width */
-        margin-top: 10px;
-        padding-top: 5px;
-        border-top: 1px dashed rgba(255, 255, 255, 0.3);
+        font-weight: 700;
+        display: block;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid #e0e0e0;
         transition: color 0.3s;
     }
 
     .result a:hover {
-        color: #ffffff;
+        color: #ff8fab;
     }
 
     /* Keyframe Animation */
-    @keyframes fadeIn {
+    @keyframes slideIn {
         from {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(100px);
         }
         to {
             opacity: 1;
@@ -149,13 +150,13 @@
 <body>
 
 <div class="card">
-    <div class="icon">🛰️</div> <h2>Geo-Locator</h2>
-    <p>Unlock your current coordinates with precision.</p>
+    <div class="icon">☁️</div> <h2>Hello, Locator!</h2>
+    <p>Tap the button below to find your spot in the world.</p>
 
-    <button onclick="getLocation()">Locate Me</button>
+    <button onclick="getLocation()">Find My Happy Place</button>
 
     <div class="result" id="result">
-        Location status: Awaiting request
+        Location status: Waiting for a hug...
     </div>
 </div>
 
@@ -164,7 +165,7 @@
         const result = document.getElementById("result");
 
         if (navigator.geolocation) {
-            result.innerHTML = `<span style="color:#f0e68c;">📡 Fetching precise coordinates...</span>`;
+            result.innerHTML = `<span style="color:#a490ff;">✨ Looking for little satellites...</span>`;
 
             navigator.geolocation.getCurrentPosition(
                 function(position) {
@@ -172,12 +173,12 @@
                     const lon = position.coords.longitude.toFixed(6);
 
                     result.innerHTML = `
-                        🌍 **Coordinates Found!**<br>
-                        Latitude: <b>${lat}</b><br>
-                        Longitude: <b>${lon}</b><br>
+                        💖 Location Found!<br>
+                        Lat: <b>${lat}</b><br>
+                        Lon: <b>${lon}</b><br>
                         <a href="https://maps.google.com/maps?q=${lat},${lon}" 
                             target="_blank">
-                            🗺️ View on Map
+                            <i class="fas fa-map-marker-alt"></i> See on Map
                         </a>
                     `;
                 },
@@ -185,22 +186,22 @@
                     let errorMessage;
                     switch (error.code) {
                         case error.PERMISSION_DENIED:
-                            errorMessage = "❌ Access Denied: Please allow location access in your browser settings.";
+                            errorMessage = "🥺 Oh no! Location permission denied. Check your settings!";
                             break;
                         case error.POSITION_UNAVAILABLE:
-                            errorMessage = "❌ Position Unavailable: Location information is currently unavailable.";
+                            errorMessage = "Hmm... Location info is hiding right now.";
                             break;
                         case error.TIMEOUT:
-                            errorMessage = "❌ Timeout: The request to get user location timed out.";
+                            errorMessage = "⏰ Timed out! My request took too long.";
                             break;
                         default:
-                            errorMessage = "❌ An unknown error occurred while fetching location.";
+                            errorMessage = "Something went wrong. Let's try again?";
                     }
-                    result.innerHTML = `<span style="color:#ff6347;">${errorMessage}</span>`;
+                    result.innerHTML = `<span style="color:#ff8fab;">${errorMessage}</span>`;
                 }
             );
         } else {
-            result.innerHTML = `<span style="color:#ff6347;">❌ Geolocation is not supported by your browser.</span>`;
+            result.innerHTML = `<span style="color:#ff8fab;">Browser says: Geolocation is sleepy and not supported!</span>`;
         }
     }
 </script>
