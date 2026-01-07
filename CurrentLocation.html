@@ -1,51 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Current Location</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+<meta charset="UTF-8">
+<title>My Current Location</title>
 
-        .location-box {
-            background: #fff;
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
 
-        button {
-            padding: 10px 20px;
-            background: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        button:hover {
-            background: #0056b3;
-        }
+    .card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        padding: 30px 35px;
+        border-radius: 20px;
+        width: 320px;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        animation: fadeIn 1s ease;
+    }
 
-        p {
-            margin-top: 15px;
-            font-size: 16px;
+    h2 {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .result {
+        margin-top: 20px;
+        font-size: 15px;
+        line-height: 1.6;
+        opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
-    </style>
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
 </head>
+
 <body>
 
-<div class="location-box">
-    <h2>Get Current Location</h2>
+<div class="card">
+    <div class="icon">📍</div>
+    <h2>Current Location</h2>
+    <p>Click below to get your location</p>
+
     <button onclick="getLocation()">Get Location</button>
-    <p id="result">Location will appear here</p>
+
+    <div class="result" id="result">
+        Location not fetched yet
+    </div>
 </div>
 
 <script>
@@ -53,22 +98,29 @@
         const result = document.getElementById("result");
 
         if (navigator.geolocation) {
+            result.innerHTML = "Fetching location... ⏳";
+
             navigator.geolocation.getCurrentPosition(
                 function(position) {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
+                    const lat = position.coords.latitude.toFixed(6);
+                    const lon = position.coords.longitude.toFixed(6);
 
                     result.innerHTML = `
-                        Latitude: ${lat} <br>
-                        Longitude: ${lon}
+                        🌐 Latitude: <b>${lat}</b><br>
+                        🌐 Longitude: <b>${lon}</b><br><br>
+                        <a href="https://www.google.com/maps?q=${lat},${lon}" 
+                           target="_blank" 
+                           style="color:#ffd369;text-decoration:none;">
+                           📍 View on Google Maps
+                        </a>
                     `;
                 },
-                function(error) {
-                    result.innerHTML = "Location access denied ❌";
+                function() {
+                    result.innerHTML = "❌ Location permission denied";
                 }
             );
         } else {
-            result.innerHTML = "Geolocation is not supported by this browser.";
+            result.innerHTML = "❌ Geolocation not supported";
         }
     }
 </script>
