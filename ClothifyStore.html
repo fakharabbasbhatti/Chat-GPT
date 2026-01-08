@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clothify – Online Clothing Store</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background: #f5f5f5; }
+
+    header {
+      background: #111;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 { font-size: 24px; }
+    header button {
+      background: #ff9800;
+      border: none;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .product img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product h3 { margin: 10px 0; }
+    .product p { color: #555; }
+
+    .product button {
+      margin-top: 10px;
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    /* Cart */
+    .cart {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 320px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+    }
+
+    .cart h2 { margin-bottom: 15px; }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .cart-total {
+      margin-top: auto;
+      font-weight: bold;
+    }
+
+    .close-cart {
+      background: red;
+      color: #fff;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Clothify</h1>
+  <button onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</button>
+</header>
+
+<div class="container">
+  <h2>Latest Collection</h2>
+  <br />
+  <div class="products">
+    <div class="product">
+      <img src="https://picsum.photos/300/300?1" />
+      <h3>T‑Shirt</h3>
+      <p>₹499</p>
+      <button onclick="addToCart('T‑Shirt', 499)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://picsum.photos/300/300?2" />
+      <h3>Denim Jeans</h3>
+      <p>₹1299</p>
+      <button onclick="addToCart('Denim Jeans', 1299)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://picsum.photos/300/300?3" />
+      <h3>Jacket</h3>
+      <p>₹2499</p>
+      <button onclick="addToCart('Jacket', 2499)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="https://picsum.photos/300/300?4" />
+      <h3>Hoodie</h3>
+      <p>₹1799</p>
+      <button onclick="addToCart('Hoodie', 1799)">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cart -->
+<div class="cart" id="cart">
+  <button class="close-cart" onclick="toggleCart()">Close</button>
+  <h2>Your Cart</h2>
+  <div id="cartItems"></div>
+  <div class="cart-total">Total: ₹<span id="total">0</span></div>
+</div>
+
+<footer>
+  <p>© 2026 Clothify | Simple HTML CSS JS E‑Commerce</p>
+</footer>
+
+<script>
+  let cart = [];
+  let total = 0;
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    total += price;
+    document.getElementById('cartCount').innerText = cart.length;
+    renderCart();
+  }
+
+  function renderCart() {
+    const cartItems = document.getElementById('cartItems');
+    cartItems.innerHTML = '';
+
+    cart.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `<span>${item.name}</span><span>₹${item.price}</span>`;
+      cartItems.appendChild(div);
+    });
+
+    document.getElementById('total').innerText = total;
+  }
+
+  function toggleCart() {
+    const cartDiv = document.getElementById('cart');
+    cartDiv.style.display = cartDiv.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
+
+</body>
+</html>
