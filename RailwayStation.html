@@ -5,32 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rawaliya Railway Station</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Quicksand', sans-serif;
     }
 
     body {
-      background: #f4f6f8;
-      color: #222;
+      background: linear-gradient(180deg, #fef6ff, #e8f3ff);
+      color: #333;
     }
 
     /* Header */
     header {
-      background: linear-gradient(135deg, #003366, #0059b3);
+      background: linear-gradient(135deg, #6a5cff, #9c8cff);
       color: #fff;
-      padding: 20px 40px;
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
     }
 
     header h1 {
@@ -41,53 +40,50 @@
     nav a {
       color: #fff;
       text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
+      margin-left: 18px;
+      font-weight: 600;
     }
 
     /* Hero */
     .hero {
-      height: 70vh;
-      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d') center/cover no-repeat;
-      display: flex;
+      padding: 70px 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 0 60px;
-      color: #fff;
+      gap: 30px;
     }
 
-    .hero-box {
-      background: rgba(0,0,0,0.6);
-      padding: 35px;
-      border-radius: 14px;
-      max-width: 550px;
-    }
-
-    .hero-box h2 {
+    .hero-text h2 {
       font-size: 38px;
-      margin-bottom: 10px;
+      color: #6a5cff;
+      margin-bottom: 15px;
     }
 
-    .hero-box p {
-      margin-bottom: 20px;
-      line-height: 1.6;
+    .hero-text p {
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.7;
     }
 
-    .hero-box button {
-      background: #ff9800;
+    .hero-text button {
+      background: #ff7ad9;
       border: none;
       padding: 12px 26px;
       font-size: 16px;
       border-radius: 30px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(255,122,217,0.4);
     }
 
-    /* Sections */
+    .hero-image img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    /* Section */
     section {
       padding: 60px 50px;
     }
@@ -96,196 +92,200 @@
       text-align: center;
       font-size: 32px;
       margin-bottom: 40px;
-      color: #003366;
+      color: #6a5cff;
     }
 
-    /* Info Cards */
+    /* Cards */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 30px;
     }
 
     .card {
       background: #fff;
-      padding: 30px;
-      border-radius: 16px;
+      padding: 25px;
+      border-radius: 24px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px) scale(1.03);
     }
 
     .card h3 {
       margin-bottom: 10px;
-      color: #0059b3;
+      color: #ff7ad9;
     }
 
     /* Timetable */
+    .table-box {
+      overflow-x: auto;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
       background: #fff;
-      border-radius: 12px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
     }
 
     table th, table td {
       padding: 14px;
       text-align: center;
-      border-bottom: 1px solid #ddd;
     }
 
     table th {
-      background: #003366;
+      background: #6a5cff;
       color: #fff;
     }
 
-    /* Contact */
-    .contact {
-      background: #eaf1f8;
+    table tr:nth-child(even) {
+      background: #f6f4ff;
     }
 
+    /* Contact */
     .contact-box {
-      max-width: 600px;
+      max-width: 550px;
       margin: auto;
       background: #fff;
       padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-radius: 26px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
     }
 
     .contact-box input, .contact-box textarea {
       width: 100%;
       padding: 12px;
       margin-bottom: 15px;
-      border-radius: 8px;
+      border-radius: 14px;
       border: 1px solid #ccc;
     }
 
     .contact-box button {
-      background: #003366;
+      width: 100%;
+      background: #6a5cff;
       color: #fff;
       border: none;
       padding: 12px;
-      width: 100%;
       border-radius: 30px;
       font-size: 16px;
+      font-weight: 700;
       cursor: pointer;
     }
 
     footer {
-      background: #003366;
+      background: #6a5cff;
       color: #fff;
       text-align: center;
       padding: 20px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
     }
 
-    @media(max-width: 768px) {
-      header { flex-direction: column; }
-      .hero { height: auto; padding: 40px 20px; }
-      .hero-box h2 { font-size: 28px; }
-      section { padding: 40px 20px; }
+    @media(max-width: 900px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Rawaliya Railway Station</h1>
+  <h1>🚉 Rawaliya Station</h1>
   <nav>
     <a href="#">Home</a>
-    <a href="#services">Services</a>
+    <a href="#services">Facilities</a>
     <a href="#timetable">Timetable</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<section class="hero">
-  <div class="hero-box">
-    <h2>Welcome to Rawaliya Station</h2>
-    <p>Your trusted railway station providing safe, reliable and comfortable travel services for passengers.</p>
-    <button onclick="scrollToSection('timetable')">View Timetable</button>
+<div class="hero">
+  <div class="hero-text">
+    <h2>Safe • Simple • Smiling Journeys 😊</h2>
+    <p>Welcome to Rawaliya Railway Station — where every journey begins with comfort, care and happiness.</p>
+    <button onclick="scrollToSection('timetable')">🚆 View Trains</button>
   </div>
-</section>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" />
+  </div>
+</div>
 
 <section id="services">
-  <h2>Station Facilities</h2>
+  <h2>Station Facilities 💜</h2>
   <div class="cards">
     <div class="card">
-      <h3>Waiting Area</h3>
-      <p>Clean and comfortable waiting rooms for passengers.</p>
+      <h3>🪑 Waiting Area</h3>
+      <p>Clean & cozy waiting lounges.</p>
     </div>
     <div class="card">
-      <h3>Ticket Counter</h3>
-      <p>Easy and quick ticket booking services.</p>
+      <h3>🎫 Ticket Counter</h3>
+      <p>Fast and friendly booking service.</p>
     </div>
     <div class="card">
-      <h3>Parking</h3>
-      <p>Secure parking facility for two & four wheelers.</p>
+      <h3>🚗 Parking</h3>
+      <p>Safe parking for all vehicles.</p>
     </div>
     <div class="card">
-      <h3>Help Desk</h3>
-      <p>24/7 passenger assistance and enquiry desk.</p>
+      <h3>📞 Help Desk</h3>
+      <p>Always ready to help passengers.</p>
     </div>
   </div>
 </section>
 
 <section id="timetable">
-  <h2>Train Timetable</h2>
-  <table>
-    <tr>
-      <th>Train No</th>
-      <th>Train Name</th>
-      <th>Arrival</th>
-      <th>Departure</th>
-    </tr>
-    <tr>
-      <td>12345</td>
-      <td>Express Mail</td>
-      <td>10:30 AM</td>
-      <td>10:45 AM</td>
-    </tr>
-    <tr>
-      <td>54321</td>
-      <td>Passenger Local</td>
-      <td>01:15 PM</td>
-      <td>01:30 PM</td>
-    </tr>
-    <tr>
-      <td>67890</td>
-      <td>Superfast</td>
-      <td>06:00 PM</td>
-      <td>06:10 PM</td>
-    </tr>
-  </table>
+  <h2>Train Timetable ⏰</h2>
+  <div class="table-box">
+    <table>
+      <tr>
+        <th>Train No</th>
+        <th>Name</th>
+        <th>Arrival</th>
+        <th>Departure</th>
+      </tr>
+      <tr>
+        <td>12345</td>
+        <td>Express Mail</td>
+        <td>10:30 AM</td>
+        <td>10:45 AM</td>
+      </tr>
+      <tr>
+        <td>54321</td>
+        <td>Passenger</td>
+        <td>01:15 PM</td>
+        <td>01:30 PM</td>
+      </tr>
+      <tr>
+        <td>67890</td>
+        <td>Superfast</td>
+        <td>06:00 PM</td>
+        <td>06:10 PM</td>
+      </tr>
+    </table>
+  </div>
 </section>
 
-<section class="contact" id="contact">
-  <h2>Contact Us</h2>
+<section id="contact">
+  <h2>Contact Us 💌</h2>
   <div class="contact-box">
     <input type="text" placeholder="Your Name" />
     <input type="email" placeholder="Your Email" />
     <textarea rows="4" placeholder="Your Message"></textarea>
-    <button onclick="submitForm()">Send Message</button>
+    <button onclick="alert('Message sent successfully 💖')">Send Message</button>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Rawaliya Railway Station | All Rights Reserved</p>
+  <p>© 2026 Rawaliya Railway Station • Made with 💜</p>
 </footer>
 
 <script>
   function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  }
-
-  function submitForm() {
-    alert('Thank you! Your message has been sent.');
   }
 </script>
 
