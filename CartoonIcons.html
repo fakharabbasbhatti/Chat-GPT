@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cartoon Icons UI</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>100+ Cartoon Icons</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 
@@ -12,67 +12,64 @@
       margin: 0;
       padding: 0;
       font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(180deg, #fef6ff, #e8f3ff);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      background: linear-gradient(180deg, #fff0f7, #e8f3ff);
     }
 
-    .icon-container {
+    h1 {
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 36px;
+      color: #6a5cff;
+    }
+
+    .icon-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 30px;
-      width: 90%;
-      max-width: 900px;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: auto;
     }
 
     .icon-card {
       background: #fff;
-      border-radius: 30px;
-      padding: 25px 15px;
+      border-radius: 26px;
+      padding: 20px 10px;
       text-align: center;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-      transition: 0.4s;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      transition: 0.35s;
       cursor: pointer;
     }
 
     .icon-card:hover {
-      transform: translateY(-12px) scale(1.05) rotate(-1deg);
+      transform: translateY(-10px) scale(1.08) rotate(-1deg);
     }
 
     .icon {
-      width: 90px;
-      height: 90px;
+      width: 70px;
+      height: 70px;
       margin: auto;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 42px;
+      font-size: 34px;
       background: linear-gradient(135deg, #ffe1f3, #e6e0ff);
-      box-shadow: inset 0 6px 12px rgba(255,255,255,0.8),
-                  0 8px 18px rgba(0,0,0,0.15);
-      transition: 0.4s;
+      box-shadow: inset 0 6px 10px rgba(255,255,255,0.9), 0 6px 14px rgba(0,0,0,0.15);
+      transition: 0.35s;
     }
 
     .icon-card:hover .icon {
-      transform: scale(1.1) rotate(8deg);
+      transform: scale(1.15) rotate(10deg);
     }
 
-    .icon-card h3 {
-      font-size: 18px;
-      color: #6a5cff;
-      margin-bottom: 6px;
-    }
-
-    .icon-card p {
-      font-size: 14px;
+    .icon-card span {
+      font-size: 13px;
+      font-weight: 700;
       color: #555;
     }
 
-    /* Click Animation */
     .icon-card.active {
       animation: bounce 0.6s ease;
     }
@@ -80,53 +77,49 @@
     @keyframes bounce {
       0% { transform: scale(1); }
       30% { transform: scale(0.9); }
-      60% { transform: scale(1.1); }
+      60% { transform: scale(1.15); }
       100% { transform: scale(1); }
+    }
+
+    @media(max-width: 600px) {
+      h1 { font-size: 26px; }
+      .icon { width: 60px; height: 60px; font-size: 28px; }
     }
   </style>
 </head>
 <body>
 
-<div class="icon-container">
+<h1>🌈 100+ Cute Cartoon Icons 🌈</h1>
 
-  <div class="icon-card" onclick="animateIcon(this)">
-    <div class="icon">🚆</div>
-    <h3>Trains</h3>
-    <p>Live train info</p>
-  </div>
-
-  <div class="icon-card" onclick="animateIcon(this)">
-    <div class="icon">🎫</div>
-    <h3>Tickets</h3>
-    <p>Easy booking</p>
-  </div>
-
-  <div class="icon-card" onclick="animateIcon(this)">
-    <div class="icon">🪑</div>
-    <h3>Waiting</h3>
-    <p>Comfort area</p>
-  </div>
-
-  <div class="icon-card" onclick="animateIcon(this)">
-    <div class="icon">🚗</div>
-    <h3>Parking</h3>
-    <p>Safe parking</p>
-  </div>
-
-  <div class="icon-card" onclick="animateIcon(this)">
-    <div class="icon">📞</div>
-    <h3>Help Desk</h3>
-    <p>24/7 support</p>
-  </div>
-
-</div>
+<div class="icon-grid" id="iconGrid"></div>
 
 <script>
-  function animateIcon(card) {
-    card.classList.remove('active');
-    void card.offsetWidth; // reset animation
-    card.classList.add('active');
-  }
+  const icons = [
+    '🚆','🚉','🚄','🚅','🚇','🚋','🛤️','🎫','🧾','📍','🪑','🛋️','🚻','🚰','🧼','🚿','🧯','🧰','🧳','🎒',
+    '🚗','🚕','🚌','🚎','🏍️','🚲','🛵','🚙','🅿️','⛽','🔧','🛞','📞','☎️','📢','🔔','📣','🎤','📡','📺',
+    '⌚','⏰','🕰️','📅','📆','🗓️','⏱️','⌛','⏳','💡','🔌','🔋','🧠','💻','🖥️','🖨️','📱','📲','📠','🖱️',
+    '🍔','🍟','🍕','🌭','🥪','🍩','🍪','☕','🍵','🥤','🍎','🍌','🍉','🍓','🍇','🍒','🥭','🍍','🥝','🍊',
+    '😊','😄','😁','🥰','😎','🤩','😇','🤗','😋','😉','🌈','⭐','✨','💜','💖','💙','💚','🎉','🎊','🎈'
+  ];
+
+  const grid = document.getElementById('iconGrid');
+
+  icons.forEach((icon, index) => {
+    const card = document.createElement('div');
+    card.className = 'icon-card';
+    card.innerHTML = `
+      <div class="icon">${icon}</div>
+      <span>Icon ${index + 1}</span>
+    `;
+
+    card.onclick = () => {
+      card.classList.remove('active');
+      void card.offsetWidth;
+      card.classList.add('active');
+    };
+
+    grid.appendChild(card);
+  });
 </script>
 
 </body>
