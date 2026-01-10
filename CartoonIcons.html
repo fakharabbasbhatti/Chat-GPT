@@ -3,119 +3,299 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>100+ Cartoon Icons</title>
+  <title>Cute 3D Icons Collection</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --primary-bg: #e0f2fe;
+      --card-bg: #ffffff;
+      --text-color: #475569;
+      --accent-color: #8b5cf6;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(180deg, #fff0f7, #e8f3ff);
+      font-family: 'Fredoka', sans-serif;
+      background-color: var(--primary-bg);
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+        radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+      background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+      min-height: 100vh;
     }
 
     h1 {
       text-align: center;
-      padding: 30px 10px;
-      font-size: 36px;
-      color: #6a5cff;
+      padding: 40px 10px 20px;
+      font-size: 42px;
+      color: #fff;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+      margin-bottom: 40px;
+      opacity: 0.9;
     }
 
     .icon-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      gap: 25px;
-      padding: 40px;
-      max-width: 1400px;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 30px;
+      padding: 20px 60px 60px;
+      max-width: 1200px;
       margin: auto;
     }
 
+    /* --- 3D Card Style (Claymorphism) --- */
     .icon-card {
-      background: #fff;
-      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
       padding: 20px 10px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-      transition: 0.35s;
       cursor: pointer;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 
+        0 10px 20px rgba(0,0,0,0.05),
+        inset 0 0 0 2px rgba(255,255,255,0.5);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
     }
 
     .icon-card:hover {
-      transform: translateY(-10px) scale(1.08) rotate(-1deg);
+      transform: translateY(-12px) scale(1.05);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 
+        0 20px 30px rgba(0,0,0,0.1),
+        inset 0 0 0 2px rgba(255,255,255,1);
     }
 
-    .icon {
-      width: 70px;
-      height: 70px;
-      margin: auto;
-      margin-bottom: 10px;
+    .icon-circle {
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 12px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
-      background: linear-gradient(135deg, #ffe1f3, #e6e0ff);
-      box-shadow: inset 0 6px 10px rgba(255,255,255,0.9), 0 6px 14px rgba(0,0,0,0.15);
-      transition: 0.35s;
+      font-size: 38px;
+      background: #fff;
+      box-shadow: 
+        inset 2px 2px 5px rgba(0,0,0,0.05),
+        5px 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.4s ease;
     }
 
-    .icon-card:hover .icon {
-      transform: scale(1.15) rotate(10deg);
+    .icon-card:hover .icon-circle {
+      transform: rotate(15deg) scale(1.1);
     }
 
-    .icon-card span {
-      font-size: 13px;
-      font-weight: 700;
+    .icon-name {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
       color: #555;
+      text-transform: capitalize;
     }
 
-    .icon-card.active {
-      animation: bounce 0.6s ease;
+    /* Click Animation Effect */
+    .icon-card.clicked {
+      animation: pop 0.3s ease;
+      background-color: #d1fae5; /* Light green on success */
     }
 
-    @keyframes bounce {
+    /* Copied Tooltip */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #333;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      opacity: 0;
+      transition: 0.3s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      pointer-events: none;
+      z-index: 1000;
+    }
+    
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @keyframes pop {
       0% { transform: scale(1); }
-      30% { transform: scale(0.9); }
-      60% { transform: scale(1.15); }
+      50% { transform: scale(0.9); }
       100% { transform: scale(1); }
     }
 
     @media(max-width: 600px) {
-      h1 { font-size: 26px; }
-      .icon { width: 60px; height: 60px; font-size: 28px; }
+      .icon-grid { padding: 20px; gap: 15px; grid-template-columns: repeat(2, 1fr); }
+      h1 { font-size: 32px; }
     }
   </style>
 </head>
 <body>
 
-<h1>🌈 100+ Cute Cartoon Icons 🌈</h1>
+  <h1>🎨 Icon Library</h1>
+  <div class="subtitle">Click any icon to copy!</div>
 
-<div class="icon-grid" id="iconGrid"></div>
+  <div class="icon-grid" id="iconGrid"></div>
+  
+  <div class="toast" id="toast">Copied to clipboard! ✅</div>
 
 <script>
-  const icons = [
-    '🚆','🚉','🚄','🚅','🚇','🚋','🛤️','🎫','🧾','📍','🪑','🛋️','🚻','🚰','🧼','🚿','🧯','🧰','🧳','🎒',
-    '🚗','🚕','🚌','🚎','🏍️','🚲','🛵','🚙','🅿️','⛽','🔧','🛞','📞','☎️','📢','🔔','📣','🎤','📡','📺',
-    '⌚','⏰','🕰️','📅','📆','🗓️','⏱️','⌛','⏳','💡','🔌','🔋','🧠','💻','🖥️','🖨️','📱','📲','📠','🖱️',
-    '🍔','🍟','🍕','🌭','🥪','🍩','🍪','☕','🍵','🥤','🍎','🍌','🍉','🍓','🍇','🍒','🥭','🍍','🥝','🍊',
-    '😊','😄','😁','🥰','😎','🤩','😇','🤗','😋','😉','🌈','⭐','✨','💜','💖','💙','💚','🎉','🎊','🎈'
+  // Maine data ko objects mein convert kiya hai taake names show ho sakein
+  const iconData = [
+    { emoji: '🚆', name: 'Train' },
+    { emoji: '🚉', name: 'Station' },
+    { emoji: '🚄', name: 'High Speed' },
+    { emoji: '🚅', name: 'Bullet Train' },
+    { emoji: '🚇', name: 'Metro' },
+    { emoji: '🚋', name: 'Tram' },
+    { emoji: '🛤️', name: 'Railway' },
+    { emoji: '🎫', name: 'Ticket' },
+    { emoji: '🧾', name: 'Receipt' },
+    { emoji: '📍', name: 'Pin' },
+    { emoji: '🪑', name: 'Chair' },
+    { emoji: '🛋️', name: 'Sofa' },
+    { emoji: '🚻', name: 'Restroom' },
+    { emoji: '🚰', name: 'Water' },
+    { emoji: '🧼', name: 'Soap' },
+    { emoji: '🚿', name: 'Shower' },
+    { emoji: '🧯', name: 'Fire Ext.' },
+    { emoji: '🧰', name: 'Toolbox' },
+    { emoji: '🧳', name: 'Luggage' },
+    { emoji: '🎒', name: 'Backpack' },
+    { emoji: '🚗', name: 'Car' },
+    { emoji: '🚕', name: 'Taxi' },
+    { emoji: '🚌', name: 'Bus' },
+    { emoji: '🚎', name: 'Trolley' },
+    { emoji: '🏍️', name: 'Bike' },
+    { emoji: '🚲', name: 'Cycle' },
+    { emoji: '🛵', name: 'Scooter' },
+    { emoji: '🚙', name: 'SUV' },
+    { emoji: '🅿️', name: 'Parking' },
+    { emoji: '⛽', name: 'Fuel' },
+    { emoji: '🔧', name: 'Wrench' },
+    { emoji: '🛞', name: 'Wheel' },
+    { emoji: '📞', name: 'Phone' },
+    { emoji: '☎️', name: 'Telephone' },
+    { emoji: '📢', name: 'Speaker' },
+    { emoji: '🔔', name: 'Bell' },
+    { emoji: '📣', name: 'Megaphone' },
+    { emoji: '🎤', name: 'Mic' },
+    { emoji: '📡', name: 'Dish' },
+    { emoji: '📺', name: 'TV' },
+    { emoji: '⌚', name: 'Watch' },
+    { emoji: '⏰', name: 'Alarm' },
+    { emoji: '🕰️', name: 'Clock' },
+    { emoji: '📅', name: 'Calendar' },
+    { emoji: '📆', name: 'Date' },
+    { emoji: '🗓️', name: 'Schedule' },
+    { emoji: '⏱️', name: 'Stopwatch' },
+    { emoji: '⌛', name: 'Hourglass' },
+    { emoji: '⏳', name: 'Timer' },
+    { emoji: '💡', name: 'Idea' },
+    { emoji: '🔌', name: 'Plug' },
+    { emoji: '🔋', name: 'Battery' },
+    { emoji: '🧠', name: 'Brain' },
+    { emoji: '💻', name: 'Laptop' },
+    { emoji: '🖥️', name: 'Desktop' },
+    { emoji: '🖨️', name: 'Printer' },
+    { emoji: '📱', name: 'Mobile' },
+    { emoji: '📲', name: 'Call' },
+    { emoji: '📠', name: 'Fax' },
+    { emoji: '🖱️', name: 'Mouse' },
+    { emoji: '🍔', name: 'Burger' },
+    { emoji: '🍟', name: 'Fries' },
+    { emoji: '🍕', name: 'Pizza' },
+    { emoji: '🌭', name: 'Hotdog' },
+    { emoji: '🥪', name: 'Sandwich' },
+    { emoji: '🍩', name: 'Donut' },
+    { emoji: '🍪', name: 'Cookie' },
+    { emoji: '☕', name: 'Coffee' },
+    { emoji: '🍵', name: 'Tea' },
+    { emoji: '🥤', name: 'Soda' },
+    { emoji: '🍎', name: 'Apple' },
+    { emoji: '🍌', name: 'Banana' },
+    { emoji: '🍉', name: 'Melon' },
+    { emoji: '🍓', name: 'Berry' },
+    { emoji: '🍇', name: 'Grapes' },
+    { emoji: '🍒', name: 'Cherry' },
+    { emoji: '🥭', name: 'Mango' },
+    { emoji: '🍍', name: 'Pineapple' },
+    { emoji: '🥝', name: 'Kiwi' },
+    { emoji: '🍊', name: 'Orange' },
+    { emoji: '😊', name: 'Happy' },
+    { emoji: '😄', name: 'Smile' },
+    { emoji: '😁', name: 'Grin' },
+    { emoji: '🥰', name: 'Love' },
+    { emoji: '😎', name: 'Cool' },
+    { emoji: '🤩', name: 'Star Eyes' },
+    { emoji: '😇', name: 'Angel' },
+    { emoji: '🤗', name: 'Hug' },
+    { emoji: '😋', name: 'Yummy' },
+    { emoji: '😉', name: 'Wink' },
+    { emoji: '🌈', name: 'Rainbow' },
+    { emoji: '⭐', name: 'Star' },
+    { emoji: '✨', name: 'Sparkle' },
+    { emoji: '💜', name: 'Purple Heart' },
+    { emoji: '💖', name: 'Sparkle Heart' },
+    { emoji: '💙', name: 'Blue Heart' },
+    { emoji: '💚', name: 'Green Heart' },
+    { emoji: '🎉', name: 'Party' },
+    { emoji: '🎊', name: 'Confetti' },
+    { emoji: '🎈', name: 'Balloon' }
   ];
 
   const grid = document.getElementById('iconGrid');
+  const toast = document.getElementById('toast');
 
-  icons.forEach((icon, index) => {
+  // Function to show Toast Message
+  function showToast(text) {
+    toast.textContent = text;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2000);
+  }
+
+  // Loop to create cards
+  iconData.forEach((item) => {
     const card = document.createElement('div');
     card.className = 'icon-card';
+    
+    // HTML structure for card
     card.innerHTML = `
-      <div class="icon">${icon}</div>
-      <span>Icon ${index + 1}</span>
+      <div class="icon-circle">${item.emoji}</div>
+      <span class="icon-name">${item.name}</span>
     `;
 
+    // Click event
     card.onclick = () => {
-      card.classList.remove('active');
-      void card.offsetWidth;
-      card.classList.add('active');
+      // 1. Copy to clipboard
+      navigator.clipboard.writeText(item.emoji);
+      
+      // 2. Animation
+      card.classList.add('clicked');
+      setTimeout(() => card.classList.remove('clicked'), 300);
+
+      // 3. Show Toast
+      showToast(`Copied ${item.emoji} to clipboard!`);
     };
 
     grid.appendChild(card);
