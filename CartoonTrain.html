@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Cartoon Train Animation</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(#b3e5ff, #fdf6ff);
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #6a5cff, #9c8cff);
+      color: #fff;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Scene */
+    .scene {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      background: linear-gradient(#87cefa, #eaf6ff);
+      overflow: hidden;
+    }
+
+    /* Sun */
+    .sun {
+      position: absolute;
+      top: 30px;
+      right: 60px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #ffd700, #ffb300);
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(255,215,0,0.8);
+    }
+
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      font-size: 60px;
+      opacity: 0.9;
+      animation: cloudMove linear infinite;
+    }
+
+    .cloud:nth-child(1) { top: 50px; left: -20%; animation-duration: 50s; }
+    .cloud:nth-child(2) { top: 100px; left: -30%; animation-duration: 70s; }
+
+    @keyframes cloudMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(130vw); }
+    }
+
+    /* Ground */
+    .ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(#7ccc7c, #4caf50);
+    }
+
+    /* Track */
+    .track {
+      position: absolute;
+      bottom: 60px;
+      width: 100%;
+      height: 6px;
+      background: #333;
+    }
+
+    .track::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      width: 100%;
+      height: 22px;
+      background: repeating-linear-gradient(90deg, #8b5a2b 0 35px, #555 35px 55px);
+    }
+
+    /* Train */
+    .train {
+      position: absolute;
+      bottom: 95px;
+      left: -600px;
+      display: flex;
+      align-items: flex-end;
+      animation: trainMove 14s linear infinite;
+    }
+
+    @keyframes trainMove {
+      from { left: -600px; }
+      to { left: 110%; }
+    }
+
+    .engine, .coach {
+      border-radius: 18px;
+      margin-right: 14px;
+      position: relative;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    }
+
+    .engine {
+      width: 160px;
+      height: 80px;
+      background: linear-gradient(#ff6fae, #ff3f8f);
+    }
+
+    .engine::before {
+      content: '🚆';
+      position: absolute;
+      font-size: 44px;
+      top: 16px;
+      left: 56px;
+    }
+
+    .chimney {
+      position: absolute;
+      top: -22px;
+      left: 20px;
+      width: 20px;
+      height: 30px;
+      background: #333;
+      border-radius: 6px;
+    }
+
+    .coach {
+      width: 140px;
+      height: 70px;
+      background: linear-gradient(#6a5cff, #8579ff);
+    }
+
+    .window {
+      position: absolute;
+      top: 22px;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-radius: 6px;
+    }
+
+    .coach .window:nth-child(1) { left: 25px; }
+    .coach .window:nth-child(2) { left: 60px; }
+    .coach .window:nth-child(3) { left: 95px; }
+
+    /* Wheels */
+    .wheel {
+      position: absolute;
+      bottom: -16px;
+      width: 26px;
+      height: 26px;
+      background: #222;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    .wheel::after {
+      content: '';
+      position: absolute;
+      top: 7px;
+      left: 7px;
+      width: 12px;
+      height: 12px;
+      background: #aaa;
+      border-radius: 50%;
+    }
+
+    .engine .wheel:nth-child(3) { left: 30px; }
+    .engine .wheel:nth-child(4) { left: 95px; }
+
+    .coach .wheel:nth-child(4) { left: 35px; }
+    .coach .wheel:nth-child(5) { left: 85px; }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Controls */
+    .controls {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .controls button {
+      background: #6a5cff;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      margin: 0 8px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>🚉 Professional Cartoon Train Animation</header>
+
+<div class="scene">
+  <div class="sun"></div>
+  <div class="cloud">☁️</div>
+  <div class="cloud">☁️</div>
+
+  <div class="ground"></div>
+  <div class="track"></div>
+
+  <div class="train" id="train">
+    <div class="engine">
+      <div class="chimney"></div>
+      <div class="wheel"></div>
+      <div class="wheel"></div>
+    </div>
+
+    <div class="coach">
+      <div class="window"></div>
+      <div class="window"></div>
+      <div class="window"></div>
+      <div class="wheel"></div>
+      <div class="wheel"></div>
+    </div>
+
+    <div class="coach">
+      <div class="window"></div>
+      <div class="window"></div>
+      <div class="window"></div>
+      <div class="wheel"></div>
+      <div class="wheel"></div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button onclick="setSpeed(20)">Slow</button>
+  <button onclick="setSpeed(14)">Normal</button>
+  <button onclick="setSpeed(8)">Fast</button>
+</div>
+
+<script>
+  const train = document.getElementById('train');
+
+  function setSpeed(seconds) {
+    train.style.animationDuration = seconds + 's';
+  }
+</script>
+
+</body>
+</html>
