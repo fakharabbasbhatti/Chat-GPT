@@ -38,6 +38,46 @@
       overflow: hidden;
     }
 
+    /* Railway Signal */
+    .signal {
+      position: absolute;
+      left: 40px;
+      bottom: 130px;
+      width: 60px;
+      background: #222;
+      border-radius: 14px;
+      padding: 10px 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .light {
+      width: 36px;
+      height: 36px;
+      margin: 8px auto;
+      border-radius: 50%;
+      background: #444;
+      filter: blur(0.3px);
+      opacity: 0.35;
+    }
+
+    .light.red.active {
+      background: red;
+      box-shadow: 0 0 18px rgba(255,0,0,0.9), 0 0 30px rgba(255,0,0,0.6);
+      opacity: 1;
+    }
+
+    .light.yellow.active {
+      background: yellow;
+      box-shadow: 0 0 18px rgba(255,255,0,0.9), 0 0 30px rgba(255,255,0,0.6);
+      opacity: 1;
+    }
+
+    .light.green.active {
+      background: #00e676;
+      box-shadow: 0 0 18px rgba(0,230,118,0.9), 0 0 30px rgba(0,230,118,0.6);
+      opacity: 1;
+    }
+
     /* Sun */
     .sun {
       position: absolute;
@@ -237,6 +277,11 @@
 <header>🚉 Professional Cartoon Train Animation</header>
 
 <div class="scene">
+  <div class="signal">
+    <div class="light red"></div>
+    <div class="light yellow"></div>
+    <div class="light green"></div>
+  </div>
   <div class="sun"></div>
   <div class="cloud">☁️</div>
   <div class="cloud">☁️</div>
@@ -283,6 +328,8 @@
 <script>
   const train = document.getElementById('train');
   const music = document.getElementById('bgMusic');
+  const lights = document.querySelectorAll('.light');
+  let current = 0;
 
   function setSpeed(seconds) {
     train.style.animationDuration = seconds + 's';
@@ -296,6 +343,15 @@
       music.pause();
     }
   }
+
+  function cycleSignal() {
+    lights.forEach(l => l.classList.remove('active'));
+    lights[current].classList.add('active');
+    current = (current + 1) % lights.length;
+  }
+
+  cycleSignal();
+  setInterval(cycleSignal, 2500);
 </script>
 
 </body>
