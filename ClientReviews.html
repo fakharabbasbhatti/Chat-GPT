@@ -1,174 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Client Testimonials</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Client Testimonials</title>
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-<!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1e293b;
+        }
 
-<style>
-body{
-  background: linear-gradient(135deg,#f4f7fb,#eef2f7);
-  font-family: 'Segoe UI', sans-serif;
-}
+        .testimonial-section {
+            padding: 80px 0;
+        }
 
-.section-title{
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+        .section-title {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #0f172a, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.testimonial-card{
-  border: none;
-  border-radius: 16px;
-  padding: 30px;
-  height: 100%;
-  transition: all .3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
+        .testimonial-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+            padding: 40px 30px;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
 
-.testimonial-card:hover{
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #0d6efd;
+        }
 
-.client-img{
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: #0d6efd;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  margin-bottom: 15px;
-}
+        /* Decorative Quote Icon */
+        .testimonial-card::before {
+            content: "\f10d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 40px;
+            color: rgba(13, 110, 253, 0.05);
+        }
 
-.stars{
-  color: #ffc107;
-}
+        .client-img-wrapper {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
 
-.country{
-  font-size: 14px;
-  color: #6c757d;
-}
+        .client-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: #0d6efd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: 3px solid #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
 
-.quote{
-  font-size: 15.5px;
-  color: #555;
-  line-height: 1.7;
-}
-</style>
+        .stars {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .client-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 2px;
+        }
+
+        .country-tag {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .quote-text {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Accent Colors for different cards */
+        .card-blue .client-img { background: #e0eafd; color: #0d6efd; }
+        .card-green .client-img { background: #dcfce7; color: #16a34a; }
+        .card-orange .client-img { background: #fef3c7; color: #d97706; }
+        .card-red .client-img { background: #fee2e2; color: #dc2626; }
+
+    </style>
 </head>
-
 <body>
 
-<section class="container py-5">
-  <div class="text-center mb-5">
-    <h2 class="section-title">What Our Clients Say</h2>
-    <p class="text-muted">Trusted by customers in USA & UK</p>
-  </div>
-
-  <div class="row g-4">
-
-    <!-- Client 1 -->
-    <div class="col-lg-3 col-md-6">
-      <div class="testimonial-card bg-white text-center">
-        <div class="client-img mx-auto">
-          <i class="fa-solid fa-user"></i>
-        </div>
-        <h5 class="mb-0">Emily Johnson</h5>
-        <span class="country">USA</span>
-        <div class="stars my-2">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
-        <p class="quote">
-          Chyia Cloth exceeded my expectations with premium fabric quality and elegant finishing.
-          The designs feel luxurious yet comfortable. Fast delivery and excellent customer service
-          made my shopping experience smooth and trustworthy. I confidently recommend this brand.
+<section class="testimonial-section container">
+    <div class="text-center mb-5">
+        <h2 class="section-title">Global Feedback</h2>
+        <p class="text-secondary mx-auto" style="max-width: 600px;">
+            We take pride in our craftsmanship. See why our clients from the USA & UK trust <strong>Chyia Cloth</strong> for their wardrobe essentials.
         </p>
-      </div>
     </div>
 
-    <!-- Client 2 -->
-    <div class="col-lg-3 col-md-6">
-      <div class="testimonial-card bg-white text-center">
-        <div class="client-img mx-auto bg-success">
-          <i class="fa-solid fa-user"></i>
-        </div>
-        <h5 class="mb-0">Oliver Smith</h5>
-        <span class="country">UK</span>
-        <div class="stars my-2">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star-half-stroke"></i>
-        </div>
-        <p class="quote">
-          I’m genuinely impressed by Chyia Cloth’s craftsmanship and modern styling.
-          The colours and stitching are outstanding, and everything fits perfectly.
-          The brand delivers premium fashion at fair pricing, making it a top choice for me.
-        </p>
-      </div>
-    </div>
+    <div class="row g-4">
 
-    <!-- Client 3 -->
-    <div class="col-lg-3 col-md-6">
-      <div class="testimonial-card bg-white text-center">
-        <div class="client-img mx-auto bg-warning">
-          <i class="fa-solid fa-user"></i>
+        <div class="col-lg-3 col-md-6">
+            <div class="testimonial-card card-blue text-center">
+                <div class="client-img-wrapper">
+                    <div class="client-img">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                </div>
+                <h5 class="client-name">Emily Johnson</h5>
+                <span class="country-tag">USA</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="quote-text">
+                    "Chyia Cloth exceeded my expectations with premium fabric quality and elegant finishing. The designs feel luxurious yet comfortable."
+                </p>
+            </div>
         </div>
-        <h5 class="mb-0">Michael Davis</h5>
-        <span class="country">USA</span>
-        <div class="stars my-2">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
-        <p class="quote">
-          Chyia Cloth combines comfort, durability, and fashion beautifully.
-          Every item feels well-made and premium. The ordering process was simple,
-          and delivery was on time. This brand has earned my trust for future purchases.
-        </p>
-      </div>
-    </div>
 
-    <!-- Client 4 -->
-    <div class="col-lg-3 col-md-6">
-      <div class="testimonial-card bg-white text-center">
-        <div class="client-img mx-auto bg-danger">
-          <i class="fa-solid fa-user"></i>
+        <div class="col-lg-3 col-md-6">
+            <div class="testimonial-card card-green text-center">
+                <div class="client-img-wrapper">
+                    <div class="client-img">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                </div>
+                <h5 class="client-name">Oliver Smith</h5>
+                <span class="country-tag">UK</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p class="quote-text">
+                    "I’m genuinely impressed by the craftsmanship. The colours and stitching are outstanding, and everything fits perfectly."
+                </p>
+            </div>
         </div>
-        <h5 class="mb-0">Charlotte Williams</h5>
-        <span class="country">UK</span>
-        <div class="stars my-2">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
-        <p class="quote">
-          Absolutely love the elegance and finish of Chyia Cloth outfits.
-          The packaging, customer communication, and overall presentation feel premium.
-          It’s rare to find such consistency in quality. I’ll definitely be a repeat customer.
-        </p>
-      </div>
-    </div>
 
-  </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="testimonial-card card-orange text-center">
+                <div class="client-img-wrapper">
+                    <div class="client-img">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                </div>
+                <h5 class="client-name">Michael Davis</h5>
+                <span class="country-tag">USA</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="quote-text">
+                    "Every item feels well-made and premium. The ordering process was simple, and delivery was on time. Highly recommended!"
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="testimonial-card card-red text-center">
+                <div class="client-img-wrapper">
+                    <div class="client-img">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                </div>
+                <h5 class="client-name">Charlotte Williams</h5>
+                <span class="country-tag">UK</span>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="quote-text">
+                    "Absolutely love the elegance. The packaging and customer communication feel premium. I'll definitely be a repeat customer."
+                </p>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
