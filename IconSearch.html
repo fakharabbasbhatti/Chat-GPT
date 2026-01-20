@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Icon Search & Hand-Drawn Style</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Patrick Hand', cursive;
+      background: #f7f9ff;
+      color: #333;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #ff9ad5, #8f9bff);
+      color: white;
+      font-size: 28px;
+    }
+
+    .search-box {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .search-box input {
+      width: 260px;
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: 2px dashed #8f9bff;
+      font-size: 16px;
+      outline: none;
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    .filters {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .filters button {
+      margin: 6px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 2px solid #ff9ad5;
+      background: #fff;
+      cursor: pointer;
+      font-family: 'Patrick Hand', cursive;
+      transition: 0.2s;
+    }
+
+    .filters button:hover {
+      background: #ff9ad5;
+      color: white;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .icon-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-8px) rotate(-2deg);
+    }
+
+    .icon {
+      font-size: 44px;
+      margin-bottom: 10px;
+    }
+
+    .icon-card span {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>🔍 Icon Search & 🧑‍🎨 Hand-Drawn Style Icons</header>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search icons..." onkeyup="searchIcons()" />
+</div>
+
+<div class="filters">
+  <button onclick="filterIcons('all')">All</button>
+  <button onclick="filterIcons('transport')">Transport</button>
+  <button onclick="filterIcons('food')">Food</button>
+  <button onclick="filterIcons('emotion')">Emotion</button>
+</div>
+
+<div class="icon-grid" id="iconGrid"></div>
+
+<script>
+  const icons = [
+    { icon: '🚆', name: 'Train', category: 'transport' },
+    { icon: '🚉', name: 'Station', category: 'transport' },
+    { icon: '🚌', name: 'Bus', category: 'transport' },
+    { icon: '🍔', name: 'Burger', category: 'food' },
+    { icon: '🍕', name: 'Pizza', category: 'food' },
+    { icon: '☕', name: 'Coffee', category: 'food' },
+    { icon: '😊', name: 'Smile', category: 'emotion' },
+    { icon: '😎', name: 'Cool', category: 'emotion' },
+    { icon: '🥰', name: 'Love', category: 'emotion' },
+    { icon: '🤩', name: 'Star', category: 'emotion' }
+  ];
+
+  let currentCategory = 'all';
+
+  function displayIcons() {
+    const grid = document.getElementById('iconGrid');
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    grid.innerHTML = '';
+
+    icons.forEach(item => {
+      if ((currentCategory === 'all' || item.category === currentCategory) && item.name.toLowerCase().includes(search)) {
+        const card = document.createElement('div');
+        card.className = 'icon-card';
+        card.innerHTML = `<div class="icon">${item.icon}</div><span>${item.name}</span>`;
+        grid.appendChild(card);
+      }
+    });
+  }
+
+  function searchIcons() {
+    displayIcons();
+  }
+
+  function filterIcons(category) {
+    currentCategory = category;
+    displayIcons();
+  }
+
+  displayIcons();
+</script>
+
+</body>
+</html>
