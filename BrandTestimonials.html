@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Brand Testimonials</title>
+<title>Premium Testimonials</title>
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,110 +13,75 @@
 
 <style>
 :root{
-  --brand-primary:#7A1CAC;  /* CHANGE BRAND COLOR */
-  --brand-gradient:linear-gradient(135deg,#7A1CAC,#C77DFF);
-  --dark:#1b1b1b;
+  --brand:#7A1CAC;  /* CHANGE BRAND COLOR */
+  --bg-dark:#0f0f14;
+  --card-bg:#ffffff;
 }
 
 body{
-  background: radial-gradient(circle at top,#f6f0fb,#f1f3f8);
-  font-family: 'Poppins', sans-serif;
+  background:linear-gradient(120deg,#f5f6fa,#eceff7);
+  font-family:'Poppins',sans-serif;
 }
 
 .section-title{
   font-weight:800;
   letter-spacing:1px;
-  color:var(--dark);
 }
 
 .testimonial-card{
+  background:var(--card-bg);
+  border-radius:22px;
+  padding:35px;
+  box-shadow:0 25px 60px rgba(0,0,0,.12);
+  transition:.4s;
   position:relative;
-  padding:35px 28px;
-  border-radius:22px;
-  background:rgba(255,255,255,0.7);
-  backdrop-filter:blur(12px);
-  box-shadow:0 20px 45px rgba(0,0,0,.12);
-  transition:all .45s ease;
-  overflow:hidden;
-}
-
-.testimonial-card::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:22px;
-  padding:2px;
-  background:var(--brand-gradient);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
 }
 
 .testimonial-card:hover{
-  transform:translateY(-14px) scale(1.02);
-  box-shadow:0 35px 70px rgba(122,28,172,.35);
+  transform:translateY(-10px);
+  box-shadow:0 40px 80px rgba(122,28,172,.35);
 }
 
-.glow{
-  position:absolute;
-  width:160px;
-  height:160px;
-  background:var(--brand-gradient);
-  filter:blur(70px);
-  opacity:.35;
-  top:-60px;
-  right:-60px;
-}
-
-.client-box{
-  display:flex;
-  align-items:center;
-  margin-bottom:18px;
-}
-
-.client-img{
-  width:65px;
-  height:65px;
+.avatar{
+  width:70px;
+  height:70px;
   border-radius:50%;
-  background:var(--brand-gradient);
+  background:linear-gradient(135deg,var(--brand),#c77dff);
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:26px;
-  box-shadow:0 8px 20px rgba(122,28,172,.4);
-}
-
-.client-name{
-  font-weight:600;
-  margin-left:15px;
-}
-
-.country{
-  font-size:13px;
-  color:#777;
+  box-shadow:0 8px 25px rgba(122,28,172,.5);
 }
 
 .stars{
-  color:#FFC107;
-  margin-bottom:12px;
+  color:#ffc107;
 }
 
 .review{
-  font-size:15.5px;
-  color:#444;
-  line-height:1.75;
+  font-size:16px;
+  line-height:1.8;
+  color:#555;
 }
 
-.quote-icon{
-  font-size:40px;
-  color:var(--brand-primary);
-  opacity:.15;
+.country{
+  font-size:14px;
+  color:#888;
+}
+
+.quote{
   position:absolute;
+  font-size:48px;
+  opacity:.08;
   bottom:20px;
   right:25px;
+  color:var(--brand);
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+  filter:invert(1);
 }
 </style>
 </head>
@@ -125,116 +90,94 @@ body{
 
 <section class="container py-5">
   <div class="text-center mb-5">
-    <h2 class="section-title">Luxury Brand Testimonials</h2>
-    <p class="text-muted">Fashion trusted by USA & UK clients</p>
+    <h2 class="section-title">What Clients Say</h2>
+    <p class="text-muted">Premium fashion trusted worldwide</p>
   </div>
 
-  <div class="row g-4">
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500" data-bs-pause="hover">
+    <div class="carousel-inner">
 
-    <!-- Card -->
-    <div class="col-lg-3 col-md-6">
-      <div class="testimonial-card">
-        <div class="glow"></div>
-        <div class="client-box">
-          <div class="client-img"><i class="fa-solid fa-user"></i></div>
-          <div class="client-name">
-            Emily Johnson<br><span class="country">USA</span>
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="testimonial-card mx-auto col-lg-6">
+          <div class="d-flex align-items-center mb-3">
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="ms-3">
+              <h5 class="mb-0">Emily Johnson</h5>
+              <span class="country">USA</span>
+            </div>
           </div>
+          <div class="stars mb-2">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review">
+            Chyia Cloth offers an unmatched luxury experience.
+            Fabric quality, stitching, and presentation are all top-tier.
+            Their attention to detail truly reflects a premium fashion brand.
+          </p>
+          <i class="fa-solid fa-quote-right quote"></i>
         </div>
-        <div class="stars">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
-        <p class="review">
-          Chyia Cloth reflects pure luxury in fabric quality and finishing.
-          Every piece feels premium and elegant. Their consistency and
-          customer service truly elevate the brand above competitors.
-        </p>
-        <i class="fa-solid fa-quote-right quote-icon"></i>
       </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="testimonial-card mx-auto col-lg-6">
+          <div class="d-flex align-items-center mb-3">
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="ms-3">
+              <h5 class="mb-0">Oliver Smith</h5>
+              <span class="country">UK</span>
+            </div>
+          </div>
+          <div class="stars mb-2">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <p class="review">
+            Exceptional craftsmanship and modern designs.
+            Everything feels elegant and well-made.
+            Chyia Cloth has become my preferred fashion destination.
+          </p>
+          <i class="fa-solid fa-quote-right quote"></i>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="testimonial-card mx-auto col-lg-6">
+          <div class="d-flex align-items-center mb-3">
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="ms-3">
+              <h5 class="mb-0">Michael Davis</h5>
+              <span class="country">USA</span>
+            </div>
+          </div>
+          <div class="stars mb-2">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review">
+            Perfect balance between comfort and style.
+            Delivery, packaging, and customer support were flawless.
+            This brand genuinely delivers premium fashion quality.
+          </p>
+          <i class="fa-solid fa-quote-right quote"></i>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Card -->
-    <div class="col-lg-3 col-md-6">
-      <div class="testimonial-card">
-        <div class="glow"></div>
-        <div class="client-box">
-          <div class="client-img"><i class="fa-solid fa-user"></i></div>
-          <div class="client-name">
-            Oliver Smith<br><span class="country">UK</span>
-          </div>
-        </div>
-        <div class="stars">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star-half-stroke"></i>
-        </div>
-        <p class="review">
-          Exceptional craftsmanship and refined styling.
-          The colours, cuts, and fabric quality feel
-          high-end and timeless. Chyia Cloth delivers
-          fashion with true elegance.
-        </p>
-        <i class="fa-solid fa-quote-right quote-icon"></i>
-      </div>
-    </div>
-
-    <!-- Card -->
-    <div class="col-lg-3 col-md-6">
-      <div class="testimonial-card">
-        <div class="glow"></div>
-        <div class="client-box">
-          <div class="client-img"><i class="fa-solid fa-user"></i></div>
-          <div class="client-name">
-            Michael Davis<br><span class="country">USA</span>
-          </div>
-        </div>
-        <div class="stars">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
-        <p class="review">
-          Premium quality with modern design aesthetics.
-          Every order arrives perfectly packed and on time.
-          Chyia Cloth has become my trusted fashion brand.
-        </p>
-        <i class="fa-solid fa-quote-right quote-icon"></i>
-      </div>
-    </div>
-
-    <!-- Card -->
-    <div class="col-lg-3 col-md-6">
-      <div class="testimonial-card">
-        <div class="glow"></div>
-        <div class="client-box">
-          <div class="client-img"><i class="fa-solid fa-user"></i></div>
-          <div class="client-name">
-            Charlotte Williams<br><span class="country">UK</span>
-          </div>
-        </div>
-        <div class="stars">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
-        <p class="review">
-          Elegant, stylish, and beautifully finished outfits.
-          From packaging to presentation, everything feels luxurious.
-          Chyia Cloth truly represents premium fashion standards.
-        </p>
-        <i class="fa-solid fa-quote-right quote-icon"></i>
-      </div>
-    </div>
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
 
   </div>
 </section>
