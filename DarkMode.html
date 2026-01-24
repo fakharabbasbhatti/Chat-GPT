@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Testimonials – Dark Mode</title>
+<title>Elite Luxury Testimonials</title>
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,144 +13,235 @@
 
 <style>
 :root{
-  --brand:#7A1CAC;
-  --bg:#f5f6fa;
-  --card:#ffffff;
-  --text:#222;
-  --muted:#777;
+  --brand:#9b5cff;
+  --bg:#f4f5fa;
+  --card:rgba(255,255,255,.75);
+  --text:#111;
+  --muted:#666;
 }
 
 body.dark{
-  --bg:#0c0c11;
-  --card:#15151d;
-  --text:#f1f1f1;
+  --bg:#0b0b12;
+  --card:rgba(20,20,30,.75);
+  --text:#f5f5f7;
   --muted:#aaa;
 }
 
 body{
-  background:var(--bg);
+  background:radial-gradient(circle at top,var(--bg),#0000);
   color:var(--text);
   font-family:'Poppins',sans-serif;
-  transition:.4s ease;
+  transition:.5s ease;
+  min-height:100vh;
 }
 
+/* Toggle */
+.theme-toggle{
+  position:fixed;
+  top:22px;
+  right:22px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:none;
+  background:linear-gradient(135deg,var(--brand),#cfa8ff);
+  color:#fff;
+  font-size:20px;
+  box-shadow:0 15px 40px rgba(155,92,255,.45);
+  cursor:pointer;
+  z-index:999;
+  transition:.4s;
+}
+.theme-toggle:hover{
+  transform:rotate(15deg) scale(1.1);
+}
+
+/* Section */
 .section-title{
-  font-weight:800;
+  font-weight:900;
+  letter-spacing:1px;
 }
 
+/* Card */
 .testimonial-card{
   background:var(--card);
-  border-radius:22px;
-  padding:35px;
-  box-shadow:0 25px 60px rgba(0,0,0,.25);
-  transition:.4s;
+  backdrop-filter:blur(14px);
+  border-radius:26px;
+  padding:40px;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
+  transition:.45s;
+}
+
+.testimonial-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:26px;
+  padding:2px;
+  background:linear-gradient(135deg,var(--brand),transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
 }
 
 .testimonial-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 35px 80px rgba(122,28,172,.4);
+  transform:translateY(-12px);
 }
 
+/* Avatar */
 .avatar{
-  width:70px;
-  height:70px;
+  width:74px;
+  height:74px;
   border-radius:50%;
-  background:linear-gradient(135deg,var(--brand),#c77dff);
+  background:linear-gradient(135deg,var(--brand),#cfa8ff);
   display:flex;
   align-items:center;
   justify-content:center;
+  font-size:28px;
   color:#fff;
-  font-size:26px;
+  box-shadow:0 12px 30px rgba(155,92,255,.55);
 }
 
+/* Text */
 .review{
+  font-size:16.5px;
+  line-height:1.9;
   color:var(--muted);
-  font-size:16px;
-  line-height:1.8;
 }
 
 .stars{
   color:#ffc107;
+  letter-spacing:2px;
 }
 
-.toggle-btn{
-  position:fixed;
-  top:25px;
-  right:25px;
-  background:linear-gradient(135deg,var(--brand),#c77dff);
-  border:none;
-  width:48px;
-  height:48px;
+.quote{
+  position:absolute;
+  bottom:25px;
+  right:30px;
+  font-size:55px;
+  opacity:.08;
+  color:var(--brand);
+}
+
+/* Carousel */
+.carousel-indicators [data-bs-target]{
+  background:var(--brand);
+  width:10px;
+  height:10px;
   border-radius:50%;
-  color:#fff;
-  font-size:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-  cursor:pointer;
-  transition:.3s;
-  z-index:999;
-}
-
-.toggle-btn:hover{
-  transform:scale(1.1);
 }
 </style>
 </head>
 
 <body>
 
-<!-- Dark Mode Toggle -->
-<button class="toggle-btn" id="themeToggle">
+<!-- Theme Toggle -->
+<button class="theme-toggle" id="toggle">
   <i class="fa-solid fa-moon"></i>
 </button>
 
 <section class="container py-5">
   <div class="text-center mb-5">
-    <h2 class="section-title">Luxury Client Testimonials</h2>
-    <p class="text-muted">Trusted fashion brand worldwide</p>
+    <h2 class="section-title">Elite Client Testimonials</h2>
+    <p class="text-muted">Luxury fashion trusted in USA & UK</p>
   </div>
 
-  <div class="testimonial-card col-lg-6 mx-auto">
-    <div class="d-flex align-items-center mb-3">
-      <div class="avatar"><i class="fa-solid fa-user"></i></div>
-      <div class="ms-3">
-        <h5 class="mb-0">Emily Johnson</h5>
-        <small class="text-muted">USA</small>
+  <div id="luxCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="hover">
+    <div class="carousel-indicators">
+      <button data-bs-target="#luxCarousel" data-bs-slide-to="0" class="active"></button>
+      <button data-bs-target="#luxCarousel" data-bs-slide-to="1"></button>
+      <button data-bs-target="#luxCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="testimonial-card col-lg-7 mx-auto">
+          <div class="d-flex align-items-center mb-3">
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="ms-3">
+              <h5 class="mb-0">Emily Johnson</h5>
+              <small class="text-muted">USA</small>
+            </div>
+          </div>
+          <div class="stars mb-2">★★★★★</div>
+          <p class="review">
+            Chyia Cloth defines modern luxury. From fabric quality to presentation,
+            everything feels refined and exclusive. This brand delivers confidence,
+            elegance, and premium craftsmanship in every piece.
+          </p>
+          <i class="fa-solid fa-quote-right quote"></i>
+        </div>
       </div>
-    </div>
 
-    <div class="stars mb-2">
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-    </div>
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="testimonial-card col-lg-7 mx-auto">
+          <div class="d-flex align-items-center mb-3">
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="ms-3">
+              <h5 class="mb-0">Oliver Smith</h5>
+              <small class="text-muted">UK</small>
+            </div>
+          </div>
+          <div class="stars mb-2">★★★★☆</div>
+          <p class="review">
+            The attention to detail is impressive. Every outfit feels premium,
+            stylish, and timeless. Chyia Cloth has become my first choice
+            for elegant and high-quality fashion.
+          </p>
+          <i class="fa-solid fa-quote-right quote"></i>
+        </div>
+      </div>
 
-    <p class="review">
-      Chyia Cloth reflects true luxury in fabric quality and craftsmanship.
-      The experience feels premium from order to delivery.
-      Highly recommended for elegant fashion lovers.
-    </p>
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="testimonial-card col-lg-7 mx-auto">
+          <div class="d-flex align-items-center mb-3">
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="ms-3">
+              <h5 class="mb-0">Michael Davis</h5>
+              <small class="text-muted">USA</small>
+            </div>
+          </div>
+          <div class="stars mb-2">★★★★★</div>
+          <p class="review">
+            Exceptional quality, flawless delivery, and luxury presentation.
+            Chyia Cloth consistently exceeds expectations and truly stands
+            among premium global fashion brands.
+          </p>
+          <i class="fa-solid fa-quote-right quote"></i>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- JS -->
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-const toggle = document.getElementById('themeToggle');
+const toggle = document.getElementById('toggle');
 const body = document.body;
 
-if(localStorage.getItem('theme') === 'dark'){
+// System theme detect
+if(window.matchMedia('(prefers-color-scheme: dark)').matches){
   body.classList.add('dark');
-  toggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  toggle.innerHTML='<i class="fa-solid fa-sun"></i>';
 }
 
+// Toggle click
 toggle.onclick = () => {
   body.classList.toggle('dark');
-  const isDark = body.classList.contains('dark');
-  toggle.innerHTML = isDark 
-    ? '<i class="fa-solid fa-sun"></i>' 
+  toggle.innerHTML = body.classList.contains('dark')
+    ? '<i class="fa-solid fa-sun"></i>'
     : '<i class="fa-solid fa-moon"></i>';
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
 };
 </script>
 
