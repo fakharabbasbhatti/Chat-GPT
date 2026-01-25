@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fakhar Abbas Bhatti | Frontend Developer</title>
+
+  <!-- CSS (same file) -->
+  <style>
+    :root {
+      --primary: #e11d48;
+      --secondary: #be123c;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #fff1f2, #ffe4e6);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 35px;
+      margin-bottom: 30px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.6rem;
+      margin-bottom: 5px;
+    }
+
+    .header h1 span {
+      color: var(--primary);
+    }
+
+    .header h3 {
+      color: var(--secondary);
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(225,29,72,0.4);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    .badge {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      color: var(--secondary);
+      padding: 8px 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #475569;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="card header">
+      <h1>Hello, I'm <span>Fakhar Abbas Bhatti</span> 👋</h1>
+      <h3>Frontend Developer • Pakistan 🇵🇰</h3>
+
+      <div class="btn-group">
+        <a class="btn" href="https://fakhar-abbas-web.vercel.app/" target="_blank">Portfolio</a>
+        <a class="btn" href="mailto:fakharabbasbhatti333@gmail.com">Email</a>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="card">
+      <h2>👨‍💻 About Me</h2>
+      <p>
+        Frontend Developer with <strong>1+ year of hands-on experience</strong>
+        building modern, scalable, and responsive web interfaces using
+        <strong>React & Next.js</strong>.
+      </p>
+      <p>
+        📍 Bahawalpur, Punjab, Pakistan <br>
+        😄 Pronouns: He/Him
+      </p>
+      <p>
+        I focus on <strong>clean UI, performance, accessibility</strong>,
+        and writing maintainable code that scales with product growth.
+      </p>
+    </div>
+
+    <!-- Skills -->
+    <div class="card">
+      <h2>🧠 Technical Skills</h2>
+      <div class="grid">
+        <div class="badge">React</div>
+        <div class="badge">Next.js</div>
+        <div class="badge">JavaScript</div>
+        <div class="badge">HTML5</div>
+        <div class="badge">CSS3</div>
+        <div class="badge">Tailwind CSS</div>
+        <div class="badge">Bootstrap</div>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="card">
+      <h2>🛠️ Tools & Platforms</h2>
+      <div class="grid">
+        <div class="badge">VS Code</div>
+        <div class="badge">Git</div>
+        <div class="badge">GitHub</div>
+        <div class="badge">Figma</div>
+        <div class="badge">Postman</div>
+        <div class="badge">Vercel</div>
+      </div>
+    </div>
+
+    <!-- Workflow -->
+    <div class="card">
+      <h2>🔄 Development Workflow</h2>
+      <ul>
+        <li>Agile / Scrum</li>
+        <li>Git version control</li>
+        <li>Code reviews</li>
+        <li>CI / CD pipelines</li>
+      </ul>
+    </div>
+
+    <!-- Focus -->
+    <div class="card">
+      <h2>🎯 Current Focus</h2>
+      <ul>
+        <li>High-performance frontend applications</li>
+        <li>Accessibility & semantic HTML</li>
+        <li>Component-driven architecture</li>
+        <li>Cross-browser compatibility</li>
+      </ul>
+    </div>
+
+    <!-- Learning -->
+    <div class="card">
+      <h2>🌱 Currently Learning</h2>
+      <ul>
+        <li>Advanced Next.js</li>
+        <li>GraphQL</li>
+        <li>Headless CMS (Sanity)</li>
+        <li>Redux Toolkit</li>
+      </ul>
+    </div>
+
+    <!-- Open For -->
+    <div class="card">
+      <h2>🤝 Open For</h2>
+      <ul>
+        <li>Freelance Projects</li>
+        <li>Remote Roles</li>
+        <li>Team Collaborations</li>
+        <li>Open-Source Contributions</li>
+      </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class="card footer">
+      ⭐ If you find my work valuable, consider starring my repositories.
+    </div>
+
+  </div>
+
+</body>
+</html>
