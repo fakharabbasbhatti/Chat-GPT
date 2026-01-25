@@ -5,26 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fakhar Abbas Bhatti | Frontend Developer</title>
 
-  <!-- CSS (same file) -->
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --primary: #e11d48;
       --secondary: #be123c;
-      --dark: #0f172a;
-      --light: #f8fafc;
-      --card: #ffffff;
-      --border: #e5e7eb;
+      --dark: #020617;
+      --muted: #475569;
+      --card-bg: rgba(255,255,255,0.85);
+      --border: rgba(255,255,255,0.4);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Inter", sans-serif;
     }
 
     body {
-      background: linear-gradient(120deg, #fff1f2, #ffe4e6);
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6, #fecdd3);
       color: var(--dark);
       line-height: 1.7;
     }
@@ -32,99 +35,142 @@
     .container {
       max-width: 1100px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 60px 20px;
     }
 
+    /* Cards */
     .card {
-      background: var(--card);
-      border-radius: 14px;
-      padding: 35px;
-      margin-bottom: 30px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 35px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      transition: transform .3s ease, box-shadow .3s ease;
     }
 
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    }
+
+    /* Header */
     .header {
       text-align: center;
     }
 
     .header h1 {
-      font-size: 2.6rem;
-      margin-bottom: 5px;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
     .header h1 span {
-      color: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .header h3 {
-      color: var(--secondary);
       font-weight: 500;
-      margin-bottom: 18px;
+      color: var(--muted);
+      margin-bottom: 25px;
     }
 
     .btn-group {
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 10px 22px;
-      border-radius: 30px;
+      padding: 12px 28px;
+      border-radius: 999px;
       text-decoration: none;
       color: #fff;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       font-weight: 500;
-      transition: 0.3s;
+      letter-spacing: .3px;
+      transition: .3s;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(225,29,72,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(225,29,72,0.45);
     }
 
+    /* Headings */
     h2 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
+      margin-bottom: 18px;
+      position: relative;
+      padding-left: 14px;
     }
 
+    h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      height: 70%;
+      width: 4px;
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    /* Grid badges */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
     }
 
     .badge {
-      background: #fff1f2;
+      padding: 12px;
+      text-align: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
       border: 1px solid #fecdd3;
       color: var(--secondary);
-      padding: 8px 12px;
-      border-radius: 10px;
-      text-align: center;
-      font-size: 0.9rem;
       font-weight: 500;
+      transition: .3s;
+    }
+
+    .badge:hover {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      transform: scale(1.05);
     }
 
     ul {
-      padding-left: 20px;
+      padding-left: 22px;
+      color: var(--muted);
     }
 
     ul li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
+    /* Footer */
     .footer {
       text-align: center;
-      color: #475569;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      color: var(--muted);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .header h1 {
-        font-size: 2rem;
+        font-size: 2.3rem;
+      }
+      .card {
+        padding: 28px;
       }
     }
   </style>
@@ -153,13 +199,10 @@
         building modern, scalable, and responsive web interfaces using
         <strong>React & Next.js</strong>.
       </p>
+      <p>📍 Bahawalpur, Punjab, Pakistan <br> 😄 Pronouns: He/Him</p>
       <p>
-        📍 Bahawalpur, Punjab, Pakistan <br>
-        😄 Pronouns: He/Him
-      </p>
-      <p>
-        I focus on <strong>clean UI, performance, accessibility</strong>,
-        and writing maintainable code that scales with product growth.
+        I focus on <strong>clean UI, performance, accessibility</strong> and
+        writing maintainable code that scales with product growth.
       </p>
     </div>
 
