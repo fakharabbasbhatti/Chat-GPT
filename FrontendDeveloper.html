@@ -9,12 +9,13 @@
 
   <style>
     :root {
-      --primary: #e11d48;
-      --secondary: #be123c;
+      --red: #dc2626;
+      --dark-red: #991b1b;
+      --yellow: #facc15;
+      --light-yellow: #fde68a;
       --dark: #020617;
       --muted: #475569;
-      --bg: #fff1f2;
-      --card: rgba(255,255,255,.85);
+      --glass: rgba(255,255,255,0.85);
     }
 
     * {
@@ -25,22 +26,64 @@
     }
 
     body {
-      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      background: linear-gradient(135deg, #fff7ed, #fef2f2);
       color: var(--dark);
       line-height: 1.7;
     }
 
     section {
-      padding: 80px 20px;
       max-width: 1100px;
       margin: auto;
+      padding: 90px 20px;
     }
 
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding-top: 110px;
+    }
+
+    .hero h1 {
+      font-size: 3.3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 35px;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(220,38,38,0.35);
+    }
+
+    /* SECTION TITLES */
     h2 {
       font-size: 2rem;
       margin-bottom: 30px;
       position: relative;
-      padding-left: 14px;
+      padding-left: 16px;
     }
 
     h2::before {
@@ -48,101 +91,58 @@
       position: absolute;
       left: 0;
       top: 6px;
-      width: 4px;
+      width: 5px;
       height: 70%;
-      background: linear-gradient(var(--primary), var(--secondary));
+      background: linear-gradient(var(--red), var(--yellow));
       border-radius: 10px;
     }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding-top: 100px;
-    }
-
-    .hero h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 32px;
-      border-radius: 999px;
-      background: linear-gradient(var(--primary), var(--secondary));
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: .3s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(225,29,72,.4);
-    }
-
     /* CARDS */
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+    }
+
+    /* GRID */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 25px;
     }
 
-    .card {
-      background: var(--card);
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 40px rgba(0,0,0,.08);
-      transition: .3s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-    }
-
     .badge {
-      background: #fff;
-      border: 1px solid #fecdd3;
-      padding: 10px;
-      border-radius: 14px;
+      background: linear-gradient(135deg, #fff, var(--light-yellow));
+      border: 1px solid var(--yellow);
+      padding: 14px;
+      border-radius: 16px;
       text-align: center;
-      font-weight: 500;
-      color: var(--secondary);
+      font-weight: 600;
+      color: var(--dark-red);
       transition: .3s;
     }
 
     .badge:hover {
-      background: linear-gradient(var(--primary), var(--secondary));
-      color: white;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      color: #000;
+      transform: scale(1.05);
     }
 
     ul {
-      padding-left: 18px;
+      padding-left: 20px;
       color: var(--muted);
     }
 
     ul li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     /* FOOTER */
     footer {
       text-align: center;
-      padding: 50px 20px;
+      padding: 60px 20px;
       color: var(--muted);
       font-size: .95rem;
     }
@@ -164,8 +164,7 @@
       Frontend Developer from Pakistan 🇵🇰  
       building modern, scalable & accessible web applications.
     </p>
-
-    <a href="https://fakhar-abbas-web.vercel.app/" class="btn" target="_blank">
+    <a href="https://fakhar-abbas-web.vercel.app/" target="_blank" class="btn">
       View Portfolio
     </a>
   </section>
@@ -175,15 +174,12 @@
     <h2>About Me</h2>
     <div class="card">
       <p>
-        Frontend Developer with <strong>1+ year of hands-on experience</strong>
-        building modern UI using <strong>React & Next.js</strong>.
+        Frontend Developer with <strong>1+ year of experience</strong> building
+        clean, responsive interfaces using <strong>React & Next.js</strong>.
       </p>
+      <p>📍 Bahawalpur, Punjab, Pakistan <br> 😄 Pronouns: He/Him</p>
       <p>
-        📍 Bahawalpur, Punjab, Pakistan <br>
-        😄 Pronouns: He/Him
-      </p>
-      <p>
-        I focus on clean UI, performance, accessibility, and scalable code.
+        I focus on performance, accessibility, and scalable UI architecture.
       </p>
     </div>
   </section>
@@ -234,7 +230,7 @@
 
   <!-- FOOTER -->
   <footer>
-    ⭐ If you like my work, consider starring my repositories  
+    ⭐ If you like my work, consider starring my repositories
   </footer>
 
 </body>
