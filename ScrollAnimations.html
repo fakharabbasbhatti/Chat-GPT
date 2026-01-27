@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fakhar Abbas Bhatti | Frontend Developer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #dc2626;
+      --dark-red: #991b1b;
+      --yellow: #facc15;
+      --light-yellow: #fde68a;
+      --dark: #020617;
+      --muted: #475569;
+      --glass: rgba(255,255,255,0.85);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fff7ed, #fef2f2);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 90px 20px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      padding-top: 110px;
+    }
+
+    .hero h1 {
+      font-size: 3.3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 35px;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(220,38,38,0.35);
+    }
+
+    /* ---------- TITLES ---------- */
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 5px;
+      height: 70%;
+      background: linear-gradient(var(--red), var(--yellow));
+      border-radius: 10px;
+    }
+
+    /* ---------- CARDS ---------- */
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+    }
+
+    /* ---------- GRID ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+    }
+
+    .badge {
+      background: linear-gradient(135deg, #fff, var(--light-yellow));
+      border: 1px solid var(--yellow);
+      padding: 14px;
+      border-radius: 16px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--dark-red);
+      transition: .3s;
+    }
+
+    .badge:hover {
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    ul {
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* ---------- SCROLL ANIMATIONS ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.3s; }
+    .delay-3 { transition-delay: 0.45s; }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero reveal">
+    <h1>Hello, I'm <span>Fakhar Abbas Bhatti</span></h1>
+    <p>
+      Frontend Developer from Pakistan 🇵🇰  
+      building modern, scalable & accessible web applications.
+    </p>
+    <a href="https://fakhar-abbas-web.vercel.app/" target="_blank" class="btn">
+      View Portfolio
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="reveal">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+        Frontend Developer with <strong>1+ year of experience</strong> building
+        clean, responsive interfaces using <strong>React & Next.js</strong>.
+      </p>
+      <p>📍 Bahawalpur, Punjab, Pakistan <br> 😄 Pronouns: He/Him</p>
+      <p>
+        I focus on performance, accessibility, and scalable UI architecture.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="reveal">
+    <h2>Technical Skills</h2>
+    <div class="grid">
+      <div class="badge delay-1">React</div>
+      <div class="badge delay-2">Next.js</div>
+      <div class="badge delay-3">JavaScript</div>
+      <div class="badge delay-1">HTML5</div>
+      <div class="badge delay-2">CSS3</div>
+      <div class="badge delay-3">Tailwind CSS</div>
+      <div class="badge delay-1">Bootstrap</div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="reveal">
+    <h2>Tools & Platforms</h2>
+    <div class="grid">
+      <div class="badge delay-1">VS Code</div>
+      <div class="badge delay-2">Git</div>
+      <div class="badge delay-3">GitHub</div>
+      <div class="badge delay-1">Figma</div>
+      <div class="badge delay-2">Postman</div>
+      <div class="badge delay-3">Vercel</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="reveal">
+    <h2>Open For</h2>
+    <div class="card">
+      <ul>
+        <li>Freelance Projects</li>
+        <li>Remote Roles</li>
+        <li>Team Collaborations</li>
+        <li>Open-Source Contributions</li>
+      </ul>
+      <br>
+      <a href="mailto:fakharabbasbhatti333@gmail.com" class="btn">
+        Contact Me
+      </a>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    ⭐ If you like my work, consider starring my repositories
+  </footer>
+
+  <!-- SCROLL JS -->
+  <script>
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
