@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fakhar Abbas Bhatti | Frontend Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #b91c1c;
+  --accent: #facc15;
+  --dark: #020617;
+  --text: #334155;
+  --muted: #64748b;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e5e7eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+}
+
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 100px 20px;
+}
+
+h1, h2 {
+  color: var(--dark);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  margin-top: 12px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 10px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding-top: 120px;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero h1 span {
+  color: var(--primary);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: .25s;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #991b1b;
+}
+
+.btn-outline {
+  border: 2px solid var(--border);
+  color: var(--dark);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* CARD */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.skill {
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  transition: .25s;
+}
+
+.skill:hover {
+  border-color: var(--accent);
+  background: #fffbea;
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 30px;
+  border-left: 2px solid var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -41px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background: var(--primary);
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 4px rgba(185,28,28,.15);
+}
+
+.timeline-date {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.timeline-company {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+}
+
+/* SCROLL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: .7s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero reveal">
+  <h1>Hello, I'm <span>Fakhar Abbas Bhatti</span></h1>
+  <p>
+    Frontend Developer from Pakistan 🇵🇰  
+    building modern, scalable & accessible web applications.
+  </p>
+  <div class="hero-actions">
+    <a href="https://fakhar-abbas-web.vercel.app/" target="_blank" class="btn btn-primary">View Portfolio</a>
+    <a href="mailto:fakharabbasbhatti333@gmail.com" class="btn btn-outline">Contact Me</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="reveal">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      Frontend Developer with <strong>1+ year experience</strong> specializing in
+      React & Next.js. I focus on clean UI, performance, accessibility and
+      scalable frontend architecture.
+    </p>
+    <br>
+    <p>📍 Bahawalpur, Punjab, Pakistan</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="reveal">
+  <h2>Technical Skills</h2>
+  <div class="grid">
+    <div class="skill">React</div>
+    <div class="skill">Next.js</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">HTML5</div>
+    <div class="skill">CSS3</div>
+    <div class="skill">Tailwind CSS</div>
+    <div class="skill">Bootstrap</div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="reveal">
+  <h2>Experience</h2>
+  <div class="card">
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-date">2024 – Present</div>
+        <div class="timeline-title">Frontend Developer</div>
+        <div class="timeline-company">Freelance / Remote</div>
+        <ul>
+          <li>Built responsive UIs using React & Next.js</li>
+          <li>Converted Figma designs into reusable components</li>
+          <li>Optimized SEO & performance</li>
+          <li>Integrated REST APIs</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-date">2023 – 2024</div>
+        <div class="timeline-title">Junior Frontend Developer</div>
+        <div class="timeline-company">Personal Projects</div>
+        <ul>
+          <li>Developed multiple frontend projects</li>
+          <li>Learned Tailwind, Bootstrap & animations</li>
+          <li>Deployed apps on Vercel & GitHub Pages</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="reveal">
+  ⭐ If you like my work, consider starring my repositories
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("active");
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
