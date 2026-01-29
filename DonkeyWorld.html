@@ -4,8 +4,131 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donkey World 🫏</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #fff0f3;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #ff4d6d, #ff758f);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .navbar nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero */
+    .hero {
+      height: 90vh;
+      background: linear-gradient(to right, #ff4d6d, #ffb3c1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+    }
+
+    .hero p {
+      margin: 15px 0;
+      font-size: 1.2rem;
+    }
+
+    .hero button {
+      padding: 12px 30px;
+      border: none;
+      background: white;
+      color: #ff4d6d;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .hero button:hover {
+      background: #ffe5ec;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+      color: #ff4d6d;
+    }
+
+    .section p {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    /* Dark section */
+    .dark {
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .dark h2 {
+      color: #ff758f;
+    }
+
+    /* Cards */
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #ff4d6d;
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 220px;
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #ff4d6d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
