@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Testimonials</title>
+<title>Luxury Video Testimonials</title>
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,76 +14,97 @@
 <style>
 :root{
   --brand:#9b5cff;
-  --bg:#f5f6fa;
-  --card:#ffffff;
-  --text:#111;
-}
-
-body.dark{
   --bg:#0b0b12;
-  --card:#15151d;
+  --card:rgba(255,255,255,.08);
   --text:#f5f5f7;
 }
 
 body{
-  background:var(--bg);
+  background:radial-gradient(circle at top,#141423,#000);
   color:var(--text);
   font-family:'Poppins',sans-serif;
-  transition:.4s;
 }
 
-/* Video Card */
+/* Card */
 .video-card{
   position:relative;
-  border-radius:22px;
+  border-radius:26px;
   overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,.25);
+  backdrop-filter:blur(14px);
+  background:var(--card);
+  box-shadow:0 35px 80px rgba(0,0,0,.6);
   cursor:pointer;
-  transition:.4s;
+  transition:.5s ease;
+}
+
+.video-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:26px;
+  padding:2px;
+  background:linear-gradient(135deg,var(--brand),transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
 }
 
 .video-card:hover{
-  transform:translateY(-10px);
+  transform:translateY(-16px) scale(1.03);
 }
 
-.video-thumb{
+/* Video Preview */
+.video-preview{
   width:100%;
-  height:260px;
+  height:280px;
   object-fit:cover;
+  filter:brightness(.8);
+  transition:.5s;
 }
 
-.video-overlay{
+.video-card:hover .video-preview{
+  filter:brightness(1);
+  transform:scale(1.05);
+}
+
+/* Overlay */
+.overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,transparent,rgba(0,0,0,.7));
   display:flex;
   align-items:center;
   justify-content:center;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.85));
 }
 
+/* Play Button */
 .play-btn{
-  width:70px;
-  height:70px;
-  background:linear-gradient(135deg,var(--brand),#d5b6ff);
+  width:80px;
+  height:80px;
   border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),#d8c0ff);
   display:flex;
   align-items:center;
   justify-content:center;
+  font-size:26px;
   color:#fff;
-  font-size:24px;
-  box-shadow:0 10px 30px rgba(155,92,255,.6);
-  transition:.3s;
+  box-shadow:0 0 40px rgba(155,92,255,.8);
+  animation:pulse 2s infinite;
 }
 
-.video-card:hover .play-btn{
-  transform:scale(1.15);
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(155,92,255,.7);}
+  70%{box-shadow:0 0 0 25px rgba(155,92,255,0);}
+  100%{box-shadow:0 0 0 0 rgba(155,92,255,0);}
 }
 
+/* Info */
 .video-info{
   position:absolute;
-  bottom:18px;
-  left:20px;
-  color:#fff;
+  bottom:20px;
+  left:22px;
 }
 
 .video-info h6{
@@ -93,19 +114,24 @@ body{
 
 .video-info span{
   font-size:13px;
-  opacity:.8;
+  opacity:.75;
 }
 
-/* Modal video */
+/* Modal */
 .modal-content{
   background:#000;
-  border-radius:18px;
+  border-radius:22px;
   overflow:hidden;
+  animation:zoom .4s ease;
+}
+
+@keyframes zoom{
+  from{transform:scale(.7);opacity:0;}
+  to{transform:scale(1);opacity:1;}
 }
 
 .modal video{
   width:100%;
-  height:auto;
 }
 </style>
 </head>
@@ -114,50 +140,54 @@ body{
 
 <section class="container py-5">
   <div class="text-center mb-5">
-    <h2 class="fw-bold">Video Testimonials</h2>
-    <p class="text-muted">Real clients. Real experiences.</p>
+    <h2 class="fw-bold">Client Video Stories</h2>
+    <p class="text-muted">Luxury fashion experiences worldwide</p>
   </div>
 
   <div class="row g-4">
 
-    <!-- Video 1 -->
+    <!-- Card -->
     <div class="col-lg-4">
       <div class="video-card" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="video1.mp4">
-        <img src="https://images.unsplash.com/photo-1520975922284-9b7d43f0f2c1" class="video-thumb">
-        <div class="video-overlay">
+        <video class="video-preview" muted loop>
+          <source src="video1.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">
           <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="video-info">
           <h6>Emily Johnson</h6>
-          <span>USA • Premium Buyer</span>
+          <span>USA • Premium Client</span>
         </div>
       </div>
     </div>
 
-    <!-- Video 2 -->
     <div class="col-lg-4">
       <div class="video-card" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="video2.mp4">
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" class="video-thumb">
-        <div class="video-overlay">
+        <video class="video-preview" muted loop>
+          <source src="video2.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">
           <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="video-info">
           <h6>Oliver Smith</h6>
-          <span>UK • Fashion Client</span>
+          <span>UK • Fashion Buyer</span>
         </div>
       </div>
     </div>
 
-    <!-- Video 3 -->
     <div class="col-lg-4">
       <div class="video-card" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="video3.mp4">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d" class="video-thumb">
-        <div class="video-overlay">
+        <video class="video-preview" muted loop>
+          <source src="video3.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">
           <div class="play-btn"><i class="fa-solid fa-play"></i></div>
         </div>
         <div class="video-info">
           <h6>Michael Davis</h6>
-          <span>USA • Loyal Customer</span>
+          <span>USA • Loyal Client</span>
         </div>
       </div>
     </div>
@@ -167,7 +197,7 @@ body{
 
 <!-- Modal -->
 <div class="modal fade" id="videoModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <video id="modalVideo" controls autoplay></video>
     </div>
@@ -178,17 +208,22 @@ body{
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+document.querySelectorAll('.video-card').forEach(card=>{
+  const preview = card.querySelector('video');
+  card.addEventListener('mouseenter',()=>preview.play());
+  card.addEventListener('mouseleave',()=>preview.pause());
+});
+
 const modal = document.getElementById('videoModal');
 const modalVideo = document.getElementById('modalVideo');
 
-modal.addEventListener('show.bs.modal', e => {
-  const card = e.relatedTarget;
-  modalVideo.src = card.getAttribute('data-video');
+modal.addEventListener('show.bs.modal', e=>{
+  modalVideo.src = e.relatedTarget.dataset.video;
 });
 
-modal.addEventListener('hidden.bs.modal', () => {
+modal.addEventListener('hidden.bs.modal', ()=>{
   modalVideo.pause();
-  modalVideo.src = '';
+  modalVideo.src='';
 });
 </script>
 
