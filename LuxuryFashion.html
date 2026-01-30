@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Fashion Testimonials</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#c9a14a;
+  --bg:#0a0a0f;
+  --card:#121218;
+  --text:#f5f5f5;
+}
+
+body{
+  background:
+    radial-gradient(circle at top, #14141f, #000),
+    url('https://grainy-gradients.vercel.app/noise.svg');
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+}
+
+/* Section Title */
+.section-title{
+  font-family:'Playfair Display',serif;
+  letter-spacing:.5px;
+}
+
+/* Card */
+.video-card{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  background:var(--card);
+  transition:.6s cubic-bezier(.19,1,.22,1);
+}
+
+.video-card:hover{
+  transform:translateY(-14px);
+}
+
+/* Video */
+.video-preview{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  filter:brightness(.75);
+  transition:.6s;
+}
+
+.video-card:hover .video-preview{
+  filter:brightness(1);
+  transform:scale(1.04);
+}
+
+/* Overlay */
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.85));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Play Button */
+.play-btn{
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-size:20px;
+  backdrop-filter:blur(6px);
+  transition:.4s;
+}
+
+.video-card:hover .play-btn{
+  background:var(--gold);
+  color:#000;
+}
+
+/* Info */
+.video-info{
+  position:absolute;
+  bottom:20px;
+  left:22px;
+}
+
+.video-info h6{
+  font-family:'Playfair Display',serif;
+  font-weight:600;
+  margin:0;
+}
+
+.video-info span{
+  font-size:13px;
+  opacity:.7;
+}
+
+/* Modal */
+.modal-content{
+  background:#000;
+  border-radius:18px;
+}
+</style>
+</head>
+
+<body>
+
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="section-title">Client Stories</h2>
+    <p class="opacity-75">Timeless fashion. Global voices.</p>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-lg-4">
+      <div class="video-card" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="video1.mp4">
+        <video class="video-preview" muted loop>
+          <source src="video1.mp4">
+        </video>
+        <div class="overlay">
+          <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <div class="video-info">
+          <h6>Emily Johnson</h6>
+          <span>New York, USA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="video-card" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="video2.mp4">
+        <video class="video-preview" muted loop>
+          <source src="video2.mp4">
+        </video>
+        <div class="overlay">
+          <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <div class="video-info">
+          <h6>Oliver Smith</h6>
+          <span>London, UK</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="video-card" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="video3.mp4">
+        <video class="video-preview" muted loop>
+          <source src="video3.mp4">
+        </video>
+        <div class="overlay">
+          <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
+        <div class="video-info">
+          <h6>Michael Davis</h6>
+          <span>Los Angeles, USA</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="videoModal">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <video id="modalVideo" controls autoplay></video>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('.video-card').forEach(card=>{
+  const video = card.querySelector('video');
+  card.addEventListener('mouseenter',()=>video.play());
+  card.addEventListener('mouseleave',()=>video.pause());
+});
+
+const modal = document.getElementById('videoModal');
+const modalVideo = document.getElementById('modalVideo');
+
+modal.addEventListener('show.bs.modal',e=>{
+  modalVideo.src = e.relatedTarget.dataset.video;
+});
+
+modal.addEventListener('hidden.bs.modal',()=>{
+  modalVideo.pause();
+  modalVideo.src='';
+});
+</script>
+
+</body>
+</html>
