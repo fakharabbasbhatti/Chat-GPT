@@ -1,124 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Editorial Fashion Portrait</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Editorial Portrait</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-    body {
-      background: #000;
-      height: 100vh;
-      font-family: 'Playfair Display', serif;
-      overflow: hidden;
-    }
+<style>
+:root {
+  --white: #f5f5f5;
+  --black: #0a0a0a;
+}
 
-    .scene {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      filter: grayscale(100%) contrast(130%);
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .image {
-      width: 100%;
-      height: 100%;
-      background-image: url("your-image.jpg"); /* <-- yahan apni image lagao */
-      background-size: cover;
-      background-position: center;
-    }
+body {
+  background: var(--black);
+  height: 100vh;
+  overflow: hidden;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+}
 
-    /* cinematic shadows */
-    .image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at center,
-        rgba(255,255,255,0.05),
-        rgba(0,0,0,0.8)
-      );
-    }
+.editorial {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
 
-    /* film grain */
-    canvas {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      mix-blend-mode: overlay;
-      opacity: 0.35;
-    }
+/* Image Layer */
+.hero {
+  position: absolute;
+  inset: 0;
+  background-image: url("your-image.jpg"); /* replace */
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(120%);
+}
 
-    .caption {
-      position: absolute;
-      bottom: 60px;
-      left: 60px;
-      color: #f2f2f2;
-      max-width: 420px;
-    }
+/* Light + Shadow Sculpting */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.15),
+      rgba(0,0,0,0.65)
+    );
+}
 
-    .caption h1 {
-      font-size: 38px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+/* Film Grain */
+canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+}
 
-    .caption p {
-      margin-top: 12px;
-      font-size: 14px;
-      opacity: 0.75;
-      line-height: 1.6;
-    }
+/* Editorial Text */
+.text {
+  position: absolute;
+  bottom: 70px;
+  left: 70px;
+  max-width: 460px;
+}
 
-  </style>
+.text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.text span {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.text p {
+  margin-top: 22px;
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.8;
+}
+
+/* Signature */
+.signature {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  opacity: 0.5;
+}
+
+</style>
 </head>
+
 <body>
 
-  <div class="scene">
-    <div class="image"></div>
-    <canvas id="grain"></canvas>
+<div class="editorial">
+  <div class="hero"></div>
+  <canvas id="grain"></canvas>
 
-    <div class="caption">
-      <h1>EDITORIAL NOIR</h1>
-      <p>
-        Calm dominance. Minimal presence.
-        A poetic fashion moment in monochrome silence.
-      </p>
-    </div>
+  <div class="text">
+    <h1>Quiet Power</h1>
+    <span>Editorial Portrait</span>
+    <p>
+      A study in restraint and dominance.
+      Silence, posture, and presence define
+      the narrative.
+    </p>
   </div>
 
-  <script>
-    const canvas = document.getElementById("grain");
-    const ctx = canvas.getContext("2d");
+  <div class="signature">VOGUE STYLE • 85MM</div>
+</div>
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener("resize", resize);
+<script>
+const canvas = document.getElementById("grain");
+const ctx = canvas.getContext("2d");
 
-    function grain() {
-      const imageData = ctx.createImageData(canvas.width, canvas.height);
-      for (let i = 0; i < imageData.data.length; i += 4) {
-        const noise = Math.random() * 255;
-        imageData.data[i] = noise;
-        imageData.data[i + 1] = noise;
-        imageData.data[i + 2] = noise;
-        imageData.data[i + 3] = 25;
-      }
-      ctx.putImageData(imageData, 0, 0);
-    }
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
-    setInterval(grain, 90);
-  </script>
+function drawGrain() {
+  const imageData = ctx.createImageData(canvas.width, canvas.height);
+  for (let i = 0; i < imageData.data.length; i += 4) {
+    const noise = Math.random() * 255;
+    imageData.data[i] = noise;
+    imageData.data[i + 1] = noise;
+    imageData.data[i + 2] = noise;
+    imageData.data[i + 3] = 18;
+  }
+  ctx.putImageData(imageData, 0, 0);
+}
+
+setInterval(drawGrain, 120);
+</script>
 
 </body>
 </html>
