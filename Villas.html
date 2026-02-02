@@ -1,169 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ThemeParkVillas | Professional Website Design</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<title>ThemeParkVillas | 3D Animated Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f4f6f8;
-      color: #212529;
-      line-height: 1.7;
-    }
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f4f6f8;
+  color: #212529;
+  overflow-x: hidden;
+}
 
-    /* Header */
-    .hero {
-      background: linear-gradient(120deg, #0d6efd, #0b5ed7);
-      color: #ffffff;
-      padding: 90px 0;
-    }
+/* HERO 3D */
+.hero {
+  background: linear-gradient(120deg, #0d6efd, #0b5ed7);
+  color: #fff;
+  padding: 100px 0;
+  perspective: 1000px;
+}
 
-    .hero h1 {
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
+.hero h1 {
+  font-weight: 600;
+  transform-style: preserve-3d;
+  animation: heroFloat 6s ease-in-out infinite;
+}
 
-    /* Sections */
-    section {
-      padding: 70px 0;
-    }
+@keyframes heroFloat {
+  0%, 100% { transform: translateZ(0); }
+  50% { transform: translateZ(30px); }
+}
 
-    .section-title {
-      font-weight: 600;
-      margin-bottom: 35px;
-    }
+/* SECTION */
+section {
+  padding: 80px 0;
+}
 
-    .section-subtext {
-      max-width: 900px;
-      margin: 0 auto;
-      color: #555;
-    }
+/* 3D CARDS */
+.cards-wrapper {
+  perspective: 1200px;
+}
 
-    /* Cards */
-    .feature-card {
-      border: none;
-      border-radius: 12px;
-      padding: 30px;
-      background: #ffffff;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease;
-    }
+.feature-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 30px;
+  height: 100%;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .feature-card:hover {
-      transform: translateY(-6px);
-    }
+.feature-card:hover {
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
 
-    .feature-card h5 {
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
+.feature-card h5 {
+  transform: translateZ(40px);
+  font-weight: 500;
+}
 
-    /* CTA */
-    .cta {
-      background-color: #ffffff;
-      border-radius: 16px;
-      padding: 50px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    }
+.feature-card p {
+  transform: translateZ(25px);
+  color: #555;
+}
 
-    /* Footer */
-    footer {
-      background-color: #0d6efd;
-      color: #ffffff;
-      padding: 25px 0;
-      font-size: 14px;
-    }
-  </style>
+/* CTA */
+.cta {
+  background: #fff;
+  border-radius: 18px;
+  padding: 60px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer {
+  background: #0d6efd;
+  color: #fff;
+  padding: 25px 0;
+  font-size: 14px;
+}
+</style>
 </head>
 
 <body>
 
-<!-- Hero -->
+<!-- HERO -->
 <header class="hero text-center">
   <div class="container">
     <h1 class="mb-4">ThemeParkVillas Website Design</h1>
-    <p class="lead mx-auto" style="max-width: 800px;">
-      A modern, strategically designed digital experience built to elevate the
-      online presence of a premium vacation rental brand.
+    <p class="lead mx-auto" style="max-width:800px;">
+      A modern, strategically designed digital experience for a premium vacation rental brand.
     </p>
   </div>
 </header>
 
-<!-- Overview -->
+<!-- OVERVIEW -->
 <section>
   <div class="container text-center">
-    <p class="section-subtext fs-5">
-      I recently delivered a fully customized, modern, and user-focused website for
-      <strong>ThemeParkVillas</strong>. The design emphasizes clarity, usability,
-      and visual consistency to ensure an intuitive browsing experience while
-      effectively showcasing properties and essential destination information.
-    </p>
-
-    <p class="section-subtext fs-5 mt-3">
-      Strong attention was given to seamless navigation, content hierarchy,
-      and user engagement to support brand trust, accessibility,
-      and informed decision-making.
+    <p class="fs-5 mx-auto" style="max-width:900px;">
+      A fully customized, modern, and user-focused website designed to enhance clarity,
+      usability, and trust through refined UI/UX and content hierarchy.
     </p>
   </div>
 </section>
 
-<!-- Pages -->
+<!-- 3D CARDS -->
 <section class="bg-light">
   <div class="container">
-    <h2 class="text-center section-title">Key Pages Developed</h2>
+    <h2 class="text-center mb-5">Key Pages Developed</h2>
 
-    <div class="row g-4 mt-4">
-
+    <div class="row g-4 cards-wrapper">
       <div class="col-md-4">
-        <div class="feature-card h-100">
+        <div class="feature-card">
           <h5>Home</h5>
-          <p>Strategically structured to establish a strong first impression and guide users effectively.</p>
+          <p>Strategic layout designed to create a powerful first impression.</p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="feature-card h-100">
+        <div class="feature-card">
           <h5>About</h5>
-          <p>Communicates brand identity, values, and credibility with clarity and confidence.</p>
+          <p>Clear brand messaging that establishes credibility and trust.</p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="feature-card h-100">
+        <div class="feature-card">
           <h5>Property</h5>
-          <p>Well-organized property listings designed for effortless browsing and exploration.</p>
+          <p>Organized property listings for smooth exploration.</p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="feature-card h-100">
+        <div class="feature-card">
           <h5>Orlando Guide</h5>
-          <p>Curated local insights tailored specifically for theme park travelers.</p>
+          <p>Helpful destination insights for theme park travelers.</p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="feature-card h-100">
+        <div class="feature-card">
           <h5>FAQ</h5>
-          <p>Clear, concise answers to common user questions, enhancing confidence and usability.</p>
+          <p>Concise answers improving user confidence.</p>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="feature-card h-100">
+        <div class="feature-card">
           <h5>Contact</h5>
-          <p>Optimized communication flow to encourage inquiries and engagement.</p>
+          <p>Optimized communication experience.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -172,30 +167,47 @@
 <section>
   <div class="container">
     <div class="cta text-center">
-      <h3 class="mb-3">Looking for a High-Quality Website?</h3>
+      <h3 class="mb-3">Looking for a Premium Website?</h3>
       <p class="mb-4">
-        If you are seeking a professional, results-driven website that strengthens
-        brand credibility and delivers an exceptional user experience, feel free to connect.
+        Let’s build a professional, conversion-focused digital experience.
       </p>
       <button class="btn btn-primary btn-lg" onclick="connect()">Get in Touch</button>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="text-center">
   <div class="container">
-    #ThemeParkVillas #WebDesign #WebsiteDesign #UIUXDesign
-    #VacationRental #RealEstateWebsite #DigitalDesign #TechThrill
+    #ThemeParkVillas #WebDesign #UIUXDesign #3DAnimation #DigitalExperience #TechThrill
   </div>
 </footer>
 
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-  function connect() {
-    alert("Thank you for reaching out. Let's discuss your project requirements.");
-  }
+/* 3D TILT EFFECT */
+document.querySelectorAll('.feature-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = ((y / rect.height) - 0.5) * -15;
+    const rotateY = ((x / rect.width) - 0.5) * 15;
+
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+  });
+});
+
+function connect() {
+  alert("Thank you for your interest. Let’s discuss your project.");
+}
 </script>
 
 </body>
