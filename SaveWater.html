@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Save Water Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#ccefff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 320px;
+    }
+
+    h1 {
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+
+    .tank {
+      width: 120px;
+      height: 200px;
+      border: 3px solid #0077b6;
+      border-radius: 6px;
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+      background: #e0f7ff;
+    }
+
+    .water {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(#4fc3f7, #0288d1);
+      transition: height 0.4s ease;
+    }
+
+    .buttons button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      background: #0077b6;
+      color: white;
+    }
+
+    .buttons button:hover {
+      background: #005f8a;
+    }
+
+    .level-text {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .tip {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Save Water 💧</h1>
+    <p>Water Level Simulation</p>
+
+    <div class="tank">
+      <div class="water" id="water"></div>
+    </div>
+
+    <div class="buttons">
+      <button onclick="addWater()">Add Water</button>
+      <button onclick="useWater()">Use Water</button>
+    </div>
+
+    <div class="level-text" id="levelText">Water Level: 0%</div>
+
+    <div class="tip">
+      Tip: Turn off the tap while brushing your teeth 🚰
+    </div>
+  </div>
+
+  <script>
+    let level = 0; // water level percentage
+
+    const waterDiv = document.getElementById('water');
+    const levelText = document.getElementById('levelText');
+
+    function updateUI() {
+      waterDiv.style.height = level + '%';
+      levelText.textContent = 'Water Level: ' + level + '%';
+    }
+
+    function addWater() {
+      if (level < 100) {
+        level += 10;
+        if (level > 100) level = 100;
+        updateUI();
+      }
+    }
+
+    function useWater() {
+      if (level > 0) {
+        level -= 10;
+        if (level < 0) level = 0;
+        updateUI();
+      }
+    }
+  </script>
+</body>
+</html>
