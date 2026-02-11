@@ -8,16 +8,16 @@
 <style>
 :root{
   --primary:#0a66c2;
+  --dark:#1d2226;
+  --sub:#65676b;
   --bg:#eef3f8;
-  --text:#1d2226;
-  --sub:#5e6a75;
 }
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
 body{
@@ -27,29 +27,31 @@ body{
   padding:20px 10px;
 }
 
-/* LinkedIn Post Card */
-.post-card{
+/* Card */
+.post{
   width:100%;
   max-width:420px;
   background:#fff;
-  border-radius:16px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+  border-radius:18px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.12);
   overflow:hidden;
-  animation:fadeIn 0.8s ease;
+  animation:slideUp 0.8s ease;
 }
 
 /* Header */
-.post-header{
+.header{
   display:flex;
   align-items:center;
   padding:15px;
 }
 
 .logo{
-  width:48px;
-  height:48px;
+  width:50px;
+  height:50px;
   border-radius:50%;
-  background:linear-gradient(135deg,#0a66c2,#004182);
+  background:linear-gradient(135deg,#0a66c2,#004182,#0a66c2);
+  background-size:200% 200%;
+  animation:gradientMove 4s ease infinite;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -59,60 +61,84 @@ body{
   margin-right:12px;
 }
 
-.company-info h4{
+.info h4{
   font-size:15px;
-  color:var(--text);
+  color:var(--dark);
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 
-.company-info span{
+.badge{
+  background:var(--primary);
+  color:#fff;
+  font-size:10px;
+  padding:2px 6px;
+  border-radius:10px;
+}
+
+.info span{
   font-size:12px;
   color:var(--sub);
 }
 
+/* Cover Image */
+.cover{
+  height:160px;
+  background:linear-gradient(135deg,#0a66c2,#004182);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
 /* Content */
-.post-content{
-  padding:0 15px 15px 15px;
+.content{
+  padding:15px;
 }
 
-.post-content h2{
-  font-size:18px;
+.content h2{
+  font-size:17px;
   margin-bottom:10px;
-  color:var(--text);
+  color:var(--dark);
 }
 
-.post-content p{
+.content p{
   font-size:14px;
   color:var(--sub);
   line-height:1.6;
   margin-bottom:12px;
 }
 
-/* Pages Section */
-.pages{
-  background:#f8fafc;
+/* Feature Box */
+.features{
+  background:#f4f7fa;
   padding:12px;
   border-radius:12px;
   margin-bottom:12px;
 }
 
-.pages div{
+.features div{
   font-size:13px;
   margin-bottom:6px;
 }
 
-.pages div:last-child{
+.features div:last-child{
   margin-bottom:0;
 }
 
 /* Hashtags */
-.hashtags{
+.tags{
   font-size:13px;
   color:var(--primary);
   font-weight:500;
 }
 
-/* Footer Actions */
-.post-footer{
+/* Footer */
+.footer{
   display:flex;
   justify-content:space-around;
   padding:12px;
@@ -121,68 +147,78 @@ body{
   color:var(--sub);
 }
 
-.post-footer div{
+.footer div{
   cursor:pointer;
-  transition:0.3s;
+  transition:0.3s ease;
 }
 
-.post-footer div:hover{
+.footer div:hover{
   color:var(--primary);
-  transform:scale(1.05);
+  transform:scale(1.08);
 }
 
-/* Animation */
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
+/* Animations */
+@keyframes slideUp{
+  from{opacity:0; transform:translateY(30px);}
   to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="post-card">
+<div class="post">
 
   <!-- Header -->
-  <div class="post-header">
+  <div class="header">
     <div class="logo">SR</div>
-    <div class="company-info">
-      <h4>Sagerestorationkc</h4>
-      <span>Website Design Launch • Just now</span>
+    <div class="info">
+      <h4>Sagerestorationkc <span class="badge">NEW</span></h4>
+      <span>Website Design Launch • 2026</span>
     </div>
   </div>
 
+  <!-- Cover -->
+  <div class="cover">
+    WEBSITE DESIGN LAUNCH ✨
+  </div>
+
   <!-- Content -->
-  <div class="post-content">
-    <h2>✨ Website Design Launch</h2>
+  <div class="content">
+    <h2>Modern, Professional & User-Focused Digital Experience</h2>
 
     <p>
-      Proud to announce the launch of a modern, user-focused website for
-      <strong>Sagerestorationkc</strong>, designed to enhance digital presence
-      and deliver a seamless experience—especially for emergency services.
+      Proud to present the newly launched website for <strong>Sagerestorationkc</strong>,
+      built to enhance credibility, improve navigation, and deliver fast access to emergency services.
     </p>
 
-    <div class="pages">
-      <div>🏠 <strong>Home</strong> – Trust-building first impression</div>
-      <div>ℹ️ <strong>About</strong> – Company mission & expertise</div>
-      <div>🏗️ <strong>Reconstruction</strong> – Restoration solutions</div>
-      <div>🚨 <strong>Emergency</strong> – Quick urgent access</div>
-      <div>🛠️ <strong>Non-Emergency</strong> – Scheduled services</div>
+    <div class="features">
+      <div>🏠 <strong>Home</strong> – Strong first impression</div>
+      <div>ℹ️ <strong>About</strong> – Brand identity & trust</div>
+      <div>🏗️ <strong>Reconstruction</strong> – Service showcase</div>
+      <div>🚨 <strong>Emergency</strong> – Instant urgent access</div>
+      <div>🛠️ <strong>Non-Emergency</strong> – Organized solutions</div>
     </div>
 
     <p>
-      A professional and credible digital identity built to strengthen brand
-      authority and user engagement.
+      Designed with clean UI/UX principles to strengthen digital presence
+      and drive meaningful customer engagement.
     </p>
 
-    <div class="hashtags">
+    <div class="tags">
       #Sagerestorationkc #WebDesign #UIUXDesign #DigitalExperience  
-      #ProfessionalWebsite #RestorationIndustry #BrandIdentity #LinkedInPost
+      #ProfessionalWebsite #RestorationIndustry #BrandIdentity #LinkedIn
     </div>
   </div>
 
   <!-- Footer -->
-  <div class="post-footer">
+  <div class="footer">
     <div>👍 Like</div>
     <div>💬 Comment</div>
     <div>🔄 Share</div>
