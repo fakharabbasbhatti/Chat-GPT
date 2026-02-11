@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditions d’Utilisation | SB Performance</title>
+
+<style>
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BODY */
+body{
+    background: linear-gradient(135deg, #111, #1f1f1f);
+    color:#f5f5f5;
+    line-height:1.6;
+}
+
+/* HEADER */
+header{
+    background:#000;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.5);
+}
+
+header h1{
+    color:#ff3c00;
+    font-size:22px;
+    letter-spacing:1px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:20px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ff3c00;
+}
+
+/* CONTAINER */
+.container{
+    max-width:1000px;
+    margin:50px auto;
+    padding:40px;
+    background:#1a1a1a;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    animation:fadeIn 1s ease-in-out;
+}
+
+.container h2{
+    color:#ff3c00;
+    margin-bottom:20px;
+}
+
+.section{
+    margin-bottom:30px;
+}
+
+.section h3{
+    margin-bottom:10px;
+    cursor:pointer;
+    position:relative;
+}
+
+.section h3::after{
+    content:"+";
+    position:absolute;
+    right:0;
+    transition:0.3s;
+}
+
+.section.active h3::after{
+    content:"−";
+}
+
+.section p{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease;
+    color:#ccc;
+}
+
+.section.active p{
+    max-height:300px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#000;
+    margin-top:40px;
+    font-size:14px;
+    color:#aaa;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .container{
+        margin:20px;
+        padding:20px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>SB Performance</h1>
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>CONDITIONS D’UTILISATION</h2>
+
+    <div class="section">
+        <h3>Objet</h3>
+        <p>
+        Les présentes conditions définissent les règles d’utilisation du site SB Performance 
+        et des services proposés. En accédant au site, vous acceptez ces conditions.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Utilisation du site</h3>
+        <p>
+        L’utilisateur s’engage à utiliser le site de manière responsable et conforme aux lois en vigueur. 
+        Toute utilisation abusive ou frauduleuse pourra entraîner la suspension d’accès.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Inscriptions</h3>
+        <p>
+        Les informations fournies lors des inscriptions doivent être exactes. 
+        SB Performance se réserve le droit de refuser une inscription en cas de non-respect des règles internes.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Propriété intellectuelle</h3>
+        <p>
+        Tous les contenus présents sur le site (textes, images, logos, design) 
+        sont protégés par les lois relatives à la propriété intellectuelle. 
+        Toute reproduction sans autorisation est strictement interdite.
+        </p>
+    </div>
+</div>
+
+<footer>
+    © 2026 SB Performance - Tous droits réservés
+</footer>
+
+<script>
+/* ACCORDION EFFECT */
+const sections = document.querySelectorAll(".section");
+
+sections.forEach(section => {
+    section.querySelector("h3").addEventListener("click", () => {
+        section.classList.toggle("active");
+    });
+});
+</script>
+
+</body>
+</html>
