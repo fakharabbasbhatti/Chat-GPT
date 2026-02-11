@@ -5,84 +5,126 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Conditions d’Utilisation | SB Performance</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-/* RESET */
+
+/* ===== RESET ===== */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* BODY */
 body{
-    background: linear-gradient(135deg, #111, #1f1f1f);
-    color:#f5f5f5;
-    line-height:1.6;
+    background: linear-gradient(120deg,#0f0f0f,#1c1c1c);
+    color:white;
+    overflow-x:hidden;
 }
 
-/* HEADER */
+/* ===== NAVBAR ===== */
 header{
-    background:#000;
-    padding:20px 40px;
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 60px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    box-shadow:0 2px 10px rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    transition:0.3s;
 }
 
-header h1{
-    color:#ff3c00;
+header.scrolled{
+    background:#000;
+    padding:15px 60px;
+}
+
+.logo{
+    font-weight:700;
     font-size:22px;
+    color:#ff3c00;
     letter-spacing:1px;
 }
 
 nav a{
-    color:#fff;
+    color:white;
     text-decoration:none;
-    margin-left:20px;
+    margin-left:30px;
+    position:relative;
     transition:0.3s;
 }
 
-nav a:hover{
+nav a::after{
+    content:"";
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    width:0%;
+    height:2px;
+    background:#ff3c00;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* ===== HERO SECTION ===== */
+.hero{
+    height:50vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background: radial-gradient(circle at center,#ff3c0020,transparent 60%);
+}
+
+.hero h1{
+    font-size:48px;
+    font-weight:700;
+}
+
+.hero span{
     color:#ff3c00;
 }
 
-/* CONTAINER */
+/* ===== CONTENT CARD ===== */
 .container{
     max-width:1000px;
-    margin:50px auto;
-    padding:40px;
-    background:#1a1a1a;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.6);
-    animation:fadeIn 1s ease-in-out;
-}
-
-.container h2{
-    color:#ff3c00;
-    margin-bottom:20px;
+    margin:-80px auto 80px;
+    padding:50px;
+    background:rgba(255,255,255,0.05);
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    box-shadow:0 0 40px rgba(255,60,0,0.2);
+    animation:fadeUp 1s ease;
 }
 
 .section{
-    margin-bottom:30px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    padding:20px 0;
+}
+
+.section:last-child{
+    border:none;
 }
 
 .section h3{
-    margin-bottom:10px;
     cursor:pointer;
-    position:relative;
-}
-
-.section h3::after{
-    content:"+";
-    position:absolute;
-    right:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:600;
     transition:0.3s;
 }
 
-.section.active h3::after{
-    content:"−";
+.section h3:hover{
+    color:#ff3c00;
 }
 
 .section p{
@@ -90,42 +132,59 @@ nav a:hover{
     overflow:hidden;
     transition:max-height 0.5s ease;
     color:#ccc;
+    margin-top:10px;
 }
 
 .section.active p{
     max-height:300px;
 }
 
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:20px;
-    background:#000;
-    margin-top:40px;
-    font-size:14px;
-    color:#aaa;
+.icon{
+    transition:0.3s;
 }
 
-/* ANIMATION */
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
+.section.active .icon{
+    transform:rotate(45deg);
+    color:#ff3c00;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#000;
+    color:#888;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
     to{opacity:1; transform:translateY(0);}
 }
 
-/* RESPONSIVE */
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-    .container{
-        margin:20px;
+    header{
         padding:20px;
     }
+    nav{
+        display:none;
+    }
+    .hero h1{
+        font-size:32px;
+    }
+    .container{
+        margin:20px;
+        padding:25px;
+    }
 }
-</style>
 
+</style>
 </head>
 <body>
 
-<header>
-    <h1>SB Performance</h1>
+<header id="navbar">
+    <div class="logo">SB Performance</div>
     <nav>
         <a href="#">Accueil</a>
         <a href="#">Services</a>
@@ -133,11 +192,14 @@ footer{
     </nav>
 </header>
 
+<section class="hero">
+    <h1>Conditions <span>d’Utilisation</span></h1>
+</section>
+
 <div class="container">
-    <h2>CONDITIONS D’UTILISATION</h2>
 
     <div class="section">
-        <h3>Objet</h3>
+        <h3>Objet <span class="icon">+</span></h3>
         <p>
         Les présentes conditions définissent les règles d’utilisation du site SB Performance 
         et des services proposés. En accédant au site, vous acceptez ces conditions.
@@ -145,7 +207,7 @@ footer{
     </div>
 
     <div class="section">
-        <h3>Utilisation du site</h3>
+        <h3>Utilisation du site <span class="icon">+</span></h3>
         <p>
         L’utilisateur s’engage à utiliser le site de manière responsable et conforme aux lois en vigueur. 
         Toute utilisation abusive ou frauduleuse pourra entraîner la suspension d’accès.
@@ -153,7 +215,7 @@ footer{
     </div>
 
     <div class="section">
-        <h3>Inscriptions</h3>
+        <h3>Inscriptions <span class="icon">+</span></h3>
         <p>
         Les informations fournies lors des inscriptions doivent être exactes. 
         SB Performance se réserve le droit de refuser une inscription en cas de non-respect des règles internes.
@@ -161,28 +223,34 @@ footer{
     </div>
 
     <div class="section">
-        <h3>Propriété intellectuelle</h3>
+        <h3>Propriété intellectuelle <span class="icon">+</span></h3>
         <p>
         Tous les contenus présents sur le site (textes, images, logos, design) 
         sont protégés par les lois relatives à la propriété intellectuelle. 
         Toute reproduction sans autorisation est strictement interdite.
         </p>
     </div>
+
 </div>
 
 <footer>
-    © 2026 SB Performance - Tous droits réservés
+    © 2026 SB Performance – Tous droits réservés
 </footer>
 
 <script>
-/* ACCORDION EFFECT */
-const sections = document.querySelectorAll(".section");
 
-sections.forEach(section => {
-    section.querySelector("h3").addEventListener("click", () => {
+/* Accordion */
+document.querySelectorAll(".section").forEach(section=>{
+    section.querySelector("h3").addEventListener("click",()=>{
         section.classList.toggle("active");
     });
 });
+
+/* Navbar scroll effect */
+window.addEventListener("scroll",()=>{
+    document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+
 </script>
 
 </body>
